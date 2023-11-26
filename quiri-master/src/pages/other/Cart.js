@@ -7,6 +7,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { addToCart, decreaseQuantity, deleteFromCart, deleteAllFromCart } from "../../store/slices/cart-slice";
 import { cartItemStock } from "../../helpers/product";
+import {t} from "i18next"
 const Cart = () => {
   let cartTotalPrice = 0;
 
@@ -28,7 +29,7 @@ const Cart = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "Cart", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

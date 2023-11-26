@@ -9,6 +9,7 @@ import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
+import {t} from "i18next"
 
 const ShopGridFullWidth = ({location}) => {
     const [layout, setLayout] = useState('grid three-column');
@@ -58,8 +59,8 @@ const ShopGridFullWidth = ({location}) => {
                 {/* breadcrumb */}
                 <Breadcrumb 
                     pages={[
-                        {label: "Home", path: process.env.PUBLIC_URL + "/" },
-                        {label: "Shop", path: process.env.PUBLIC_URL + pathname }
+                        {label: t("home"), path: process.env.PUBLIC_URL + "/" },
+                        {label: t("shop"), path: process.env.PUBLIC_URL + pathname }
                     ]} 
                 />
 

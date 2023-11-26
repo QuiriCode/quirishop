@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
-
+import {t} from "i18next"
 const CustomForm = ({ status, message, onValidated }) => {
   let email;
   const submit = () => {
@@ -23,12 +23,12 @@ const CustomForm = ({ status, message, onValidated }) => {
             className="email"
             ref={node => (email = node)}
             type="email"
-            placeholder="Enter your email address..."
+            placeholder={t("enter_your_email")}
           />
         </div>
         <div className="clear">
           <button className="button" onClick={submit}>
-            SUBSCRIBE
+            {t("subscribe").toUpperCase()}
           </button>
         </div>
       </div>

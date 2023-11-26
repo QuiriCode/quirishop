@@ -1,50 +1,37 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import SEO from "../../components/seo";
-import LayoutOne from "../../layouts/LayoutOne";
-import BrandLogoSliderThree from "../../wrappers/brand-logo/BrandLogoSliderThree";
-import NewsletterFour from "../../wrappers/newsletter/NewsletterFour";
-import ProductSliderThree from "../../wrappers/product/ProductSliderThree";
-import BannerThirty from "../../wrappers/banner/BannerThirty";
-import ProductSliderFour from "../../wrappers/product/ProductSliderFour";
-import VideoPopup from "../../components/video-popup/VideoPopup";
-import FeatureIconSix from "../../wrappers/feature-icon/FeatureIconSix";
-import HeroSliderTwentyEight from "../../wrappers/hero-slider/HeroSliderTwentyEight";
+import Layout from "../../layouts/Layout";
+import HeroSlider from "../../wrappers/hero-slider/HeroSlider";
+import FeatureIcon from "../../wrappers/feature-icon/FeatureIcon";
+import TabProduct from "../../wrappers/product/TabProduct";
+import BlogFeatured from "../../wrappers/blog-featured/BlogFeatured";
 
-const HomeFashionEight = () => {
+const HomeFashion = () => {
   return (
     <Fragment>
       <SEO
-        titleTemplate="Fashion Home"
+        titleTemplate="Anasayfa"
         description="Fashion home of quiri react minimalist eCommerce template."
       />
-      <LayoutOne
+      <Layout
+      headerTop="visible"
         headerContainerClass="container-fluid"
         headerPaddingClass="header-padding-1"
       >
         {/* hero slider */}
-        <HeroSliderTwentyEight />
-        {/* feature text */}
-        <FeatureIconSix spaceBottomClass="pb-100" spaceTopClass="pt-30" />
-        {/* video popup */}
-        <VideoPopup spaceBottomClass="pb-100" />
-        {/* product slider */}
-        <ProductSliderFour category="fashion" />
-        {/* banner */}
-        <BannerThirty spaceTopClass="pt-100" spaceBottomClass="pb-70" />
-        {/* product slider */}
-        <ProductSliderThree category="fashion" />
-        {/* brand logo slider */}
-        <BrandLogoSliderThree spaceBottomClass="pb-95" spaceTopClass="pt-100" />
-        {/* newsletter */}
-        <NewsletterFour
-          spaceTopClass="pt-100"
-          spaceBottomClass="pb-100"
-          subscribeBtnClass="hover-red"
-          bgColorClass="bg-gray-7"
-        />
-      </LayoutOne>
+        <HeroSlider />
+
+        {/* featured icon */}
+        <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" />
+
+        {/* tab product */}
+        <TabProduct spaceBottomClass="pb-60" category="fashion" />
+
+        {/* blog featured */}
+        <BlogFeatured spaceBottomClass="pb-55" />
+      </Layout>
     </Fragment>
   );
 };
 
-export default HomeFashionEight;
+export default HomeFashion;

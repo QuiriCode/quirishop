@@ -1,0 +1,133 @@
+0 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'react-scripts' ]
+1 info using npm@8.5.1
+2 info using node@v12.22.9
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/usr/share/nodejs/npm/npmrc Completed in 3ms
+6 timing config:load:builtin Completed in 3ms
+7 timing config:load:cli Completed in 2ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/home/cemtezgelen/quirishop/quiri-master/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 1ms
+11 timing config:load:file:/home/cemtezgelen/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:validate Completed in 0ms
+16 timing config:load:credentials Completed in 0ms
+17 timing config:load:setEnvs Completed in 1ms
+18 timing config:load Completed in 9ms
+19 timing npm:load:configload Completed in 9ms
+20 timing npm:load:setTitle Completed in 1ms
+21 timing config:load:flatten Completed in 2ms
+22 timing npm:load:display Completed in 4ms
+23 verbose logfile /home/cemtezgelen/.npm/_logs/2023-11-26T21_26_34_264Z-debug-0.log
+24 timing npm:load:logFile Completed in 5ms
+25 timing npm:load:timers Completed in 0ms
+26 timing npm:load:configScope Completed in 0ms
+27 timing npm:load Completed in 20ms
+28 timing arborist:ctor Completed in 1ms
+29 silly logfile start cleaning logs, removing 1 files
+30 timing arborist:ctor Completed in 0ms
+31 timing idealTree:init Completed in 140ms
+32 timing idealTree:userRequests Completed in 2ms
+33 silly idealTree buildDeps
+34 silly fetch manifest @ant-design/icons@5.1.4
+35 http fetch GET 200 https://registry.npmjs.org/@ant-design%2ficons 942ms (cache miss)
+36 silly fetch manifest react@18.2.0
+37 http fetch GET 200 https://registry.npmjs.org/react 56ms (cache miss)
+38 silly fetch manifest react-dom@18.2.0
+39 http fetch GET 200 https://registry.npmjs.org/react-dom 38ms (cache miss)
+40 silly fetch manifest @reduxjs/toolkit@1.9.2
+41 http fetch GET 200 https://registry.npmjs.org/@reduxjs%2ftoolkit 86ms (cache miss)
+42 silly fetch manifest react-redux@8.0.5
+43 http fetch GET 200 https://registry.npmjs.org/react-redux 676ms (cache miss)
+44 silly fetch manifest @types/react@18.0.28
+45 http fetch GET 200 https://registry.npmjs.org/@types%2freact 57ms (cache miss)
+46 silly fetch manifest @types/react-dom@^16.8 || ^17.0 || ^18.0
+47 http fetch GET 200 https://registry.npmjs.org/@types%2freact-dom 47ms (cache miss)
+48 silly fetch manifest react-native@>=0.59
+49 http fetch GET 200 https://registry.npmjs.org/react-native 246ms (cache miss)
+50 silly fetch manifest redux@4.2.1
+51 http fetch GET 200 https://registry.npmjs.org/redux 26ms (cache miss)
+52 silly fetch manifest animate.css@4.1.1
+53 http fetch GET 200 https://registry.npmjs.org/animate.css 729ms (cache miss)
+54 silly fetch manifest antd@5.6.3
+55 http fetch GET 200 https://registry.npmjs.org/antd 712ms (cache miss)
+56 silly fetch manifest axios@1.3.3
+57 http fetch GET 200 https://registry.npmjs.org/axios 45ms (cache miss)
+58 silly fetch manifest bootstrap@5.2.3
+59 http fetch GET 200 https://registry.npmjs.org/bootstrap 35ms (cache miss)
+60 silly fetch manifest @popperjs/core@2.11.6
+61 http fetch GET 200 https://registry.npmjs.org/@popperjs%2fcore 882ms (cache miss)
+62 silly fetch manifest clsx@1.2.1
+63 http fetch GET 200 https://registry.npmjs.org/clsx 720ms (cache miss)
+64 silly fetch manifest google-map-react@2.2.0
+65 http fetch GET 200 https://registry.npmjs.org/google-map-react 674ms (cache miss)
+66 silly fetch manifest i18next@22.4.9
+67 http fetch GET 200 https://registry.npmjs.org/i18next 34ms (cache miss)
+68 silly fetch manifest i18next-browser-languagedetector@7.0.1
+69 http fetch GET 200 https://registry.npmjs.org/i18next-browser-languagedetector 24ms (cache miss)
+70 silly fetch manifest i18next-http-backend@2.1.1
+71 http fetch GET 200 https://registry.npmjs.org/i18next-http-backend 38ms (cache miss)
+72 silly fetch manifest prop-types@15.8.1
+73 http fetch GET 200 https://registry.npmjs.org/prop-types 34ms (cache miss)
+74 silly fetch manifest react-bootstrap@2.7.2
+75 http fetch GET 200 https://registry.npmjs.org/react-bootstrap 210ms (cache miss)
+76 silly fetch manifest react-countup@6.4.1
+77 http fetch GET 200 https://registry.npmjs.org/react-countup 30ms (cache miss)
+78 silly fetch manifest react-fullpage@0.1.19
+79 http fetch GET 200 https://registry.npmjs.org/react-fullpage 196ms (cache miss)
+80 silly fetch manifest react-helmet-async@1.3.0
+81 http fetch GET 200 https://registry.npmjs.org/react-helmet-async 28ms (cache miss)
+82 silly fetch manifest react-hooks-paginator@0.5.0
+83 http fetch GET 200 https://registry.npmjs.org/react-hooks-paginator 420ms (cache miss)
+84 silly fetch manifest react-i18next@12.1.5
+85 http fetch GET 200 https://registry.npmjs.org/react-i18next 222ms (cache miss)
+86 silly fetch manifest react-mailchimp-subscribe@2.1.3
+87 http fetch GET 200 https://registry.npmjs.org/react-mailchimp-subscribe 726ms (cache miss)
+88 silly fetch manifest react-modal-video@1.2.10
+89 http fetch GET 200 https://registry.npmjs.org/react-modal-video 198ms (cache miss)
+90 timing idealTree Completed in 8591ms
+91 timing command:install Completed in 8629ms
+92 verbose stack Error: unable to resolve dependency tree
+92 verbose stack     at Arborist.[failPeerConflict] (/usr/share/nodejs/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1399:25)
+92 verbose stack     at Arborist.[loadPeerSet] (/usr/share/nodejs/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1365:34)
+92 verbose stack     at async Arborist.[buildDepStep] (/usr/share/nodejs/@npmcli/arborist/lib/arborist/build-ideal-tree.js:951:11)
+92 verbose stack     at async Arborist.buildIdealTree (/usr/share/nodejs/@npmcli/arborist/lib/arborist/build-ideal-tree.js:215:7)
+92 verbose stack     at async Promise.all (index 1)
+92 verbose stack     at async Arborist.reify (/usr/share/nodejs/@npmcli/arborist/lib/arborist/reify.js:152:5)
+92 verbose stack     at async Install.exec (/usr/share/nodejs/npm/lib/commands/install.js:157:5)
+92 verbose stack     at async module.exports (/usr/share/nodejs/npm/lib/cli.js:66:5)
+93 verbose cwd /home/cemtezgelen/quirishop/quiri-master
+94 verbose Linux 5.15.0-87-generic
+95 verbose argv "/usr/bin/node" "/usr/bin/npm" "install" "react-scripts"
+96 verbose node v12.22.9
+97 verbose npm  v8.5.1
+98 error code ERESOLVE
+99 error ERESOLVE unable to resolve dependency tree
+100 error
+101 error While resolving: [1mquiri-shop[22m@[1m2.0.0[22m
+101 error Found: [1mreact[22m@[1m18.2.0[22m[2m[22m
+101 error [2mnode_modules/react[22m
+101 error   [1mreact[22m@"[1m^18.2.0[22m" from the root project
+101 error
+101 error Could not resolve dependency:
+101 error [35mpeer[39m [1mreact[22m@"[1m^16.2.0 || ^17.0.0[22m" from [1mreact-modal-video[22m@[1m1.2.10[22m[2m[22m
+101 error [2mnode_modules/react-modal-video[22m
+101 error   [1mreact-modal-video[22m@"[1m^1.2.10[22m" from the root project
+101 error
+101 error Fix the upstream dependency conflict, or retry
+101 error this command with --force, or --legacy-peer-deps
+101 error to accept an incorrect (and potentially broken) dependency resolution.
+101 error
+101 error See /home/cemtezgelen/.npm/eresolve-report.txt for a full report.
+102 verbose exit 1
+103 timing npm Completed in 8855ms
+104 verbose unfinished npm timer reify 1701033994483
+105 verbose unfinished npm timer reify:loadTrees 1701033994512
+106 verbose unfinished npm timer idealTree:buildDeps 1701033994657
+107 verbose unfinished npm timer idealTree:#root 1701033994658
+108 verbose code 1
+109 error A complete log of this run can be found in:
+109 error     /home/cemtezgelen/.npm/_logs/2023-11-26T21_26_34_264Z-debug-0.log

@@ -7,6 +7,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { addToCart } from "../../store/slices/cart-slice";
 import { deleteFromWishlist, deleteAllFromWishlist } from "../../store/slices/wishlist-slice"
+import {t} from "i18next"
 
 const Wishlist = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Wishlist = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "Wishlist", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

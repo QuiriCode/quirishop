@@ -14,7 +14,7 @@ const FooterNewsletter = ({
   return (
     <div className={clsx("footer-widget", spaceBottomClass, sideMenu ? "ml-ntv5" : spaceLeftClass, widgetColorClass)}>
       <div className="footer-title">
-        <h3>{t('subscribe')}</h3>
+        <h3>{t('subscribe').toUpperCase()}</h3>
       </div>
       <div className={clsx("subscribe-style", colorClass)}>
         <p>{t('')}</p>

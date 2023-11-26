@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 
 import { setActiveSort } from "../../helpers/product";
+import {t} from "i18next"
 
 const ShopColor = ({ colors, getSortParams }) => {
   return (
     <div className="sidebar-widget mt-50">
-      <h4 className="pro-sidebar-title">Color </h4>
+      <h4 className="pro-sidebar-title">{t("color")}</h4>
       <div className="sidebar-widget-list mt-20">
         {colors ? (
           <ul>
@@ -17,7 +18,7 @@ const ShopColor = ({ colors, getSortParams }) => {
                     setActiveSort(e);
                   }}
                 >
-                  <span className="checkmark" /> All Colors{" "}
+                  <span className="checkmark" /> {t("all_colors")}{" "}
                 </button>
               </div>
             </li>
@@ -39,7 +40,7 @@ const ShopColor = ({ colors, getSortParams }) => {
             })}
           </ul>
         ) : (
-          "No colors found"
+          t("no_colors_found")
         )}
       </div>
     </div>

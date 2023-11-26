@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-
+import {t} from "i18next"
 const NotFound = () => {
   let { pathname } = useLocation();
 
@@ -17,7 +17,7 @@ const NotFound = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "404 page", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

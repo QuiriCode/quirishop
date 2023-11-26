@@ -6,7 +6,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import BlogSidebar from "../../wrappers/blog/BlogSidebar";
 import BlogPagination from "../../wrappers/blog/BlogPagination";
 import BlogPosts from "../../wrappers/blog/BlogPosts";
-
+import {t} from "i18next"
 const Blog = () => {
   let { pathname } = useLocation();
 
@@ -20,7 +20,7 @@ const Blog = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "Blog", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

@@ -7,7 +7,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescriptionSlider from "../../wrappers/product/ProductImageDescriptionSlider";
-
+import {t} from "i18next"
 const ProductSlider = () => {
   let { pathname } = useLocation();
   let { id } = useParams();
@@ -25,7 +25,7 @@ const ProductSlider = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "Shop Product", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

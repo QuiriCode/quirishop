@@ -2,8 +2,10 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
+import { useTranslation } from "react-i18next";
 import SectionTitle from "../../components/section-title/SectionTitle";
 import ProductGrid from "./ProductGrid";
+
 
 const TabProduct = ({
   spaceTopClass,
@@ -11,12 +13,13 @@ const TabProduct = ({
   bgColorClass,
   category
 }) => {
+  const { t } = useTranslation();
   return (
     <div
       className={clsx("product-area", spaceTopClass, spaceBottomClass, bgColorClass)}
     >
       <div className="container">
-        <SectionTitle titleText="DAILY DEALS!" positionClass="text-center" />
+        <SectionTitle titleText={t("daily_deals")} positionClass="text-center" />
         <Tab.Container defaultActiveKey="bestSeller">
           <Nav
             variant="pills"
@@ -24,17 +27,17 @@ const TabProduct = ({
           >
             <Nav.Item>
               <Nav.Link eventKey="newArrival">
-                <h4>New Arrivals</h4>
+                <h4>{t("new_arrivals")}</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="bestSeller">
-                <h4>Best Sellers</h4>
+                <h4>{t("best_sellers")}</h4>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="saleItems">
-                <h4>Sale Items</h4>
+                <h4>{t("you_may_interest")}</h4>
               </Nav.Link>
             </Nav.Item>
           </Nav>

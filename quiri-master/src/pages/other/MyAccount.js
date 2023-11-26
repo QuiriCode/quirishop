@@ -4,21 +4,21 @@ import Accordion from "react-bootstrap/Accordion";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-
+import {t} from "i18next";
 const MyAccount = () => {
   let { pathname } = useLocation();
 
   return (
     <Fragment>
       <SEO
-        titleTemplate="My Account"
+        titleTemplate={t("login")}
         description="My Account page of quiri react minimalist eCommerce template."
       />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "My Account", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

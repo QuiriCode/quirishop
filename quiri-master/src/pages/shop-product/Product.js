@@ -7,19 +7,17 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
-
+import {t} from "i18next"
 const Product = () => {
   let { pathname } = useLocation();
   let { id } = useParams();
   
   const { products } = useSelector((state) => state.product.products);
   const product = products.find(product => product.id==id);
-  console.log("1products",products)
-  console.log("2product",product)
   return (
     <Fragment>
       <SEO
-        titleTemplate="Product Page"
+        titleTemplate={product.name}
         description="Product Page of quiri react minimalist eCommerce template."
       />
 
@@ -27,8 +25,8 @@ const Product = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
-            {label: "Shop Product", path: process.env.PUBLIC_URL + pathname }
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
+            {label: product.name, path: process.env.PUBLIC_URL + pathname }
           ]} 
         />
 

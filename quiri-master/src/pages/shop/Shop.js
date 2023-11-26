@@ -4,11 +4,12 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom"
 import { getSortedProducts } from '../../helpers/product';
 import SEO from "../../components/seo";
-import LayoutOne from '../../layouts/LayoutOne';
+import Layout from '../../layouts/Layout';
 import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
+import {t} from "i18next"
 
 const Shop = () => {
     const [layout, setLayout] = useState('grid three-column');
@@ -49,16 +50,15 @@ const Shop = () => {
     return (
         <Fragment>
             <SEO
-                titleTemplate="Shop Page"
+                titleTemplate={t("products")}
                 description="Shop page of quiri react minimalist eCommerce template."
             />
-
-            <LayoutOne headerTop="visible">
+            <Layout headerTop="visible">
                 {/* breadcrumb */}
                 <Breadcrumb 
                     pages={[
-                        {label: "Home", path: process.env.PUBLIC_URL + "/" },
-                        {label: "Shop", path: process.env.PUBLIC_URL + pathname }
+                        {label: t("home"), path: process.env.PUBLIC_URL + "/" },
+                        {label: t("products"), path: process.env.PUBLIC_URL + pathname }
                     ]} 
                 />
 
@@ -94,14 +94,10 @@ const Shop = () => {
                         </div>
                     </div>
                 </div>
-            </LayoutOne>
+            </Layout>
         </Fragment>
     )
 }
 
 
-<<<<<<< Updated upstream
 export default Shop;
-=======
-export default Shop;
->>>>>>> Stashed changes

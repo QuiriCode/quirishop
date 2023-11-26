@@ -5,7 +5,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import BlogPagination from "../../wrappers/blog/BlogPagination";
 import BlogPostsNoSidebar from "../../wrappers/blog/BlogPostsNoSidebar";
-
+import {t} from "i18next"
 const BlogNoSidebar = () => {
   let { pathname } = useLocation();
 
@@ -19,7 +19,7 @@ const BlogNoSidebar = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "Blog", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

@@ -3,13 +3,14 @@ import clsx from "clsx";
 import blogFeaturedData from "../../data/blog-featured/blog-featured.json";
 import BlogFeaturedSingle from "../../components/blog-featured/BlogFeaturedSingle";
 import SectionTitle from "../../components/section-title/SectionTitle";
+import { t } from "i18next";
 
 const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
   return (
     <div className={clsx("blog-area", spaceTopClass, spaceBottomClass)}>
       <div className="container">
         <SectionTitle
-          titleText="OUR BLOG"
+          titleText={t("blog")}
           positionClass="text-center"
           spaceClass="mb-55"
         />

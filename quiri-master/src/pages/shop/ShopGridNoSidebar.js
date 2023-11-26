@@ -8,7 +8,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
-
+import {t} from "i18next"
 const ShopGridNoSidebar = () => {
   const [layout, setLayout] = useState("grid three-column");
   const sortType = "";
@@ -56,8 +56,8 @@ const ShopGridNoSidebar = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
-            {label: "Shop", path: process.env.PUBLIC_URL + pathname }
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
+            {label: t("shop"), path: process.env.PUBLIC_URL + pathname }
           ]} 
         />
 

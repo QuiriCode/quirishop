@@ -32,6 +32,13 @@ const currencySlice = createSlice({
                     currencyName
                 };
             }
+            if (currencyName === "TL") {
+                return state = {
+                    currencySymbol: "₺",
+                    currencyRate: 1,
+                    currencyName
+                };
+            }
         }
     },
 });

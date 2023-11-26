@@ -5,7 +5,7 @@ import { getDiscountPrice } from "../../helpers/product";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-
+import {t} from "i18next" 
 const Checkout = () => {
   let cartTotalPrice = 0;
 
@@ -23,7 +23,7 @@ const Checkout = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "Checkout", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

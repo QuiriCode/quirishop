@@ -1,12 +1,12 @@
-
+import {t} from "i18next"
 
 const ShopSearch = () => {
   return (
     <div className="sidebar-widget">
-      <h4 className="pro-sidebar-title">Search </h4>
+      <h4 className="pro-sidebar-title">{t("search_product")}</h4>
       <div className="pro-sidebar-search mb-50 mt-25">
         <form className="pro-sidebar-search-form" action="#">
-          <input type="text" placeholder="Search here..." />
+          <input type="text" placeholder={t("search_here")} />
           <button>
             <i className="pe-7s-search" />
           </button>

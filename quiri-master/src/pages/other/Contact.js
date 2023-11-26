@@ -4,7 +4,7 @@ import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import GoogleMap from "../../components/google-map"
-
+import {t} from "i18next"
 const Contact = () => {
   let { pathname } = useLocation();
 
@@ -18,7 +18,7 @@ const Contact = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "Contact", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

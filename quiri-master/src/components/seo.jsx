@@ -22,7 +22,7 @@ SEO.propTypes = {
 }
 
 SEO.defaultProps = {
-    title: "Quiri",
+    title: "İnovatif Market",
     titleTemplate: "Product Page",
     description: "Product page of quiri react minimalist eCommerce template.",
 };

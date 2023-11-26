@@ -9,7 +9,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
-
+import {t} from "i18next"
 const ShopGridTwoColumn = () => {
   const [layout, setLayout] = useState("grid two-column");
   const [sortType, setSortType] = useState("");
@@ -60,16 +60,16 @@ const ShopGridTwoColumn = () => {
 
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb 
+        <Breadcrumb
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
-            {label: "Shop", path: process.env.PUBLIC_URL + pathname }
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
+            {label: t("shop"), path: process.env.PUBLIC_URL + pathname }
           ]} 
         />
 
         <div className="shop-area pt-95 pb-100">
           <div className="container">
-            <div className="row">
+            <div className="row">*
               <div className="col-lg-3">
                 {/* shop sidebar */}
                 <ShopSidebar

@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { Fragment } from "react";
 import Header from "../wrappers/header/Header";
-import FooterOne from "../wrappers/footer/FooterOne";
+import Footer from "../wrappers/footer/Footer";
 import ScrollToTop from "../components/scroll-to-top"
 
-const LayoutOne = ({
+const Layout = ({
   children,
   headerContainerClass,
   headerTop,
@@ -20,7 +20,7 @@ const LayoutOne = ({
         headerPositionClass={headerPositionClass}
       />
       {children}
-      <FooterOne
+      <Footer
         backgroundColorClass="bg-gray"
         spaceTopClass="pt-100"
         spaceBottomClass="pb-70"
@@ -30,7 +30,7 @@ const LayoutOne = ({
   );
 };
 
-LayoutOne.propTypes = {
+Layout.propTypes = {
   children: PropTypes.node,
   headerContainerClass: PropTypes.string,
   headerPaddingClass: PropTypes.string,
@@ -38,4 +38,4 @@ LayoutOne.propTypes = {
   headerTop: PropTypes.string
 };
 
-export default LayoutOne;
+export default Layout;

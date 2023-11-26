@@ -5,22 +5,22 @@ import Nav from "react-bootstrap/Nav";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-
+import {t} from "i18next"
 const LoginRegister = () => {
   let { pathname } = useLocation();
 
   return (
     <Fragment>
       <SEO
-        titleTemplate="Login"
+        titleTemplate={t("login")}
         description="Login page of quiri react minimalist eCommerce template."
       />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
-            {label: "Login Register", path: process.env.PUBLIC_URL + pathname }
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
+            {label: t("loginregister"), path: process.env.PUBLIC_URL + pathname }
           ]} 
         />
         <div className="login-register-area pt-100 pb-100">
@@ -32,12 +32,12 @@ const LoginRegister = () => {
                     <Nav variant="pills" className="login-register-tab-list">
                       <Nav.Item>
                         <Nav.Link eventKey="login">
-                          <h4>Login</h4>
+                          <h4>{t("login")}</h4>
                         </Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link eventKey="register">
-                          <h4>Register</h4>
+                          <h4>{t("register")}</h4>
                         </Nav.Link>
                       </Nav.Item>
                     </Nav>
@@ -49,23 +49,23 @@ const LoginRegister = () => {
                               <input
                                 type="text"
                                 name="user-name"
-                                placeholder="Username"
+                                placeholder={t("username")}
                               />
                               <input
                                 type="password"
                                 name="user-password"
-                                placeholder="Password"
+                                placeholder={t("password")}
                               />
                               <div className="button-box">
                                 <div className="login-toggle-btn">
                                   <input type="checkbox" />
-                                  <label className="ml-10">Remember me</label>
+                                  <label className="ml-10">{t("remember_me")}</label>
                                   <Link to={process.env.PUBLIC_URL + "/"}>
-                                    Forgot Password?
+                                  {t("forgot_password")}
                                   </Link>
                                 </div>
                                 <button type="submit">
-                                  <span>Login</span>
+                                  <span>{t("login")}</span>
                                 </button>
                               </div>
                             </form>
@@ -79,21 +79,21 @@ const LoginRegister = () => {
                               <input
                                 type="text"
                                 name="user-name"
-                                placeholder="Username"
+                                placeholder={t("username")}
                               />
                               <input
                                 type="password"
                                 name="user-password"
-                                placeholder="Password"
+                                placeholder={t("password")}
                               />
                               <input
                                 name="user-email"
-                                placeholder="Email"
+                                placeholder={t("email")}
                                 type="email"
                               />
                               <div className="button-box">
                                 <button type="submit">
-                                  <span>Register</span>
+                                  <span>{t("register")}</span>
                                 </button>
                               </div>
                             </form>

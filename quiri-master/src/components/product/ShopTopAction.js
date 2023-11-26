@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import { setActiveLayout } from "../../helpers/product";
-
+import {t}  from "i18next"
 const ShopTopAction = ({
   getLayout,
   getFilterSortParams,
@@ -15,13 +15,14 @@ const ShopTopAction = ({
           <select
             onChange={e => getFilterSortParams("filterSort", e.target.value)}
           >
-            <option value="default">Default</option>
-            <option value="priceHighToLow">Price - High to Low</option>
-            <option value="priceLowToHigh">Price - Low to High</option>
+            <option value="default">{t("default")}</option>
+            <option value="priceHighToLow">{t("price")} - {t("high_to_low")}</option>
+            <option value="priceLowToHigh">{t("price")} - {t("low_to_high")}</option>
           </select>
         </div>
         <p>
-          Showing {sortedProductCount} of {productCount} result
+          {productCount} {t("products_found")}
+          {/*Showing {sortedProductCount} of {productCount} result}*/}
         </p>
       </div>
 

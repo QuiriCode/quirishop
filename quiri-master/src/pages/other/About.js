@@ -9,7 +9,7 @@ import TextGridOne from "../../wrappers/text-grid/TextGridOne";
 import FunFactOne from "../../wrappers/fun-fact/FunFactOne";
 import TeamMemberOne from "../../wrappers/team-member/TeamMemberOne";
 import BrandLogoSliderOne from "../../wrappers/brand-logo/BrandLogoSliderOne";
-
+import {t} from "i18next"
 const About = () => {
   let { pathname } = useLocation();
 
@@ -23,7 +23,7 @@ const About = () => {
         {/* breadcrumb */}
         <Breadcrumb 
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
+            {label: t("home"), path: process.env.PUBLIC_URL + "/" },
             {label: "About us", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />

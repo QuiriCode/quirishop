@@ -19,7 +19,7 @@ const FooterCopyright = ({ footerLogo, spaceBottomClass, colorClass }) => {
           rel="noopener noreferrer"
           target="_blank"
         >
-          Quiri
+          {t("company_name")}
         </a>
         .<br /> {t('allrightsreserved')}
       </p>

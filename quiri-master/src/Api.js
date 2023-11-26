@@ -31,7 +31,7 @@ class Api {
     try {
       const response = await axios.get(`${this.baseUrl}/categories`);
       console.log(response)
-      return response.data;
+      return response.data.categories;
     } catch (error) {
       console.error("Kategoriler alınırken hata oluştu.", error);
       throw error;

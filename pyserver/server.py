@@ -14,13 +14,13 @@ CORS(app)
 db_conn = psycopg2.connect(
     user='postgres',
     host='localhost',
-    database='inomar',
+    database='quiri',
     password='12345',
     port=5432
 )
 db_cursor = db_conn.cursor()
 
-UPLOAD_FOLDER = 'images' 
+UPLOAD_FOLDER = 'images'
 
 def save_image_from_base64(base64content, filename):
     with open(filename, "wb") as file:

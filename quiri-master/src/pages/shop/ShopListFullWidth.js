@@ -58,8 +58,8 @@ const ShopListFullWidth = ({location}) => {
                 {/* breadcrumb */}
                 <Breadcrumb 
                     pages={[
-                        {label: "Home", path: process.env.PUBLIC_URL + "/" },
-                        {label: "Shop", path: process.env.PUBLIC_URL + pathname }
+                        {label: t("home"), path: process.env.PUBLIC_URL + "/" },
+                        {label: t("shop"), path: process.env.PUBLIC_URL + pathname }
                     ]} 
                 />
 

@@ -9,6 +9,7 @@ import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { addToCompare } from "../../store/slices/compare-slice";
+import {t} from "i18next"
 
 const ProductGridListSingle = ({
   product,
@@ -51,7 +52,7 @@ const ProductGridListSingle = ({
                 ) : (
                   ""
                 )}
-                {product.new ? <span className="purple">New</span> : ""}
+                {product.new ? <span className="purple">{t("new")}</span> : ""}
               </div>
             ) : (
               ""
@@ -64,8 +65,8 @@ const ProductGridListSingle = ({
                   disabled={wishlistItem !== undefined}
                   title={
                     wishlistItem !== undefined
-                      ? "Added to wishlist"
-                      : "Add to wishlist"
+                      ? t("added_to_wishlist")
+                      : t("add_to_wishlist")
                   }
                   onClick={() => dispatch(addToWishlist(product))}
                 >
@@ -80,11 +81,11 @@ const ProductGridListSingle = ({
                     target="_blank"
                   >
                     {" "}
-                    Buy now{" "}
+                    {t("buy_now")}{" "}
                   </a>
                 ) : product.variations && product.variations.length >= 1 ? (
                   <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
-                    Select Option
+                    {t("select_option")}
                   </Link>
                 ) : product.stock && product.stock > 0 ? (
                   <button
@@ -96,23 +97,23 @@ const ProductGridListSingle = ({
                     }
                     disabled={cartItem !== undefined && cartItem.quantity > 0}
                     title={
-                      cartItem !== undefined ? "Added to cart" : "Add to cart"
+                      cartItem !== undefined ? t("added_to_cart") : t("add_to_cart")
                     }
                   >
                     {" "}
                     <i className="pe-7s-cart"></i>{" "}
                     {cartItem !== undefined && cartItem.quantity > 0
-                      ? "Added"
-                      : "Add to cart"}
+                      ? t("added")
+                      : t("add_to_cart")}
                   </button>
                 ) : (
                   <button disabled className="active">
-                    Out of Stock
+                    {t("out_of_stock")}
                   </button>
                 )}
               </div>
               <div className="pro-same-action pro-quickview">
-                <button onClick={() => setModalShow(true)} title="Quick View">
+                <button onClick={() => setModalShow(true)} title={t("quick_view")}>
                   <i className="pe-7s-look" />
                 </button>
               </div>
@@ -171,7 +172,7 @@ const ProductGridListSingle = ({
                       ) : (
                         ""
                       )}
-                      {product.new ? <span className="purple">New</span> : ""}
+                      {product.new ? <span className="purple">{t("new")}</span> : ""}
                     </div>
                   ) : (
                     ""
@@ -224,13 +225,13 @@ const ProductGridListSingle = ({
                         target="_blank"
                       >
                         {" "}
-                        Buy now{" "}
+                        {t("buy_now")}{" "}
                       </a>
                     ) : product.variations && product.variations.length >= 1 ? (
                       <Link
                         to={`${process.env.PUBLIC_URL}/product/${product.id}`}
                       >
-                        Select Option
+                        {t("select_option")}
                       </Link>
                     ) : product.stock && product.stock > 0 ? (
                       <button
@@ -245,19 +246,19 @@ const ProductGridListSingle = ({
                         }
                         title={
                           cartItem !== undefined
-                            ? "Added to cart"
-                            : "Add to cart"
+                            ? t("added_to_cart")
+                            : t("add_to_cart")
                         }
                       >
                         {" "}
                         <i className="pe-7s-cart"></i>{" "}
                         {cartItem !== undefined && cartItem.quantity > 0
-                          ? "Added"
-                          : "Add to cart"}
+                          ? t("added")
+                          : t("add_to_cart")}
                       </button>
                     ) : (
                       <button disabled className="active">
-                        Out of Stock
+                        {t("out_of_stock")}
                       </button>
                     )}
                   </div>
@@ -268,8 +269,8 @@ const ProductGridListSingle = ({
                       disabled={wishlistItem !== undefined}
                       title={
                         wishlistItem !== undefined
-                          ? "Added to wishlist"
-                          : "Add to wishlist"
+                          ? t("added_to_wishlist")
+                          : t("add_to_wishlist")
                       }
                       onClick={() => dispatch(addToWishlist(product))}
                     >
@@ -282,8 +283,8 @@ const ProductGridListSingle = ({
                       disabled={compareItem !== undefined}
                       title={
                         compareItem !== undefined
-                          ? "Added to compare"
-                          : "Add to compare"
+                          ? t("added_to_compare")
+                          : t("add_to_compare")
                       }
                       onClick={() => dispatch(addToCompare(product))}
                     >

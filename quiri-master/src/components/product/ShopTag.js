@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 
 import { setActiveSort } from "../../helpers/product";
-
+import {t} from "i18next"
 const ShopTag = ({ tags, getSortParams }) => {
   return (
     <div className="sidebar-widget mt-50">
-      <h4 className="pro-sidebar-title">Tag </h4>
+      <h4 className="pro-sidebar-title">{t("tag")}</h4>
       <div className="sidebar-widget-tag mt-25">
         {tags ? (
           <ul>
@@ -25,7 +25,7 @@ const ShopTag = ({ tags, getSortParams }) => {
             })}
           </ul>
         ) : (
-          "No tags found"
+          t("no_tags_found")
         )}
       </div>
     </div>

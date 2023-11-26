@@ -132,13 +132,13 @@ const App = () => {
             <Routes>
               <Route
                 path={process.env.PUBLIC_URL + "/"}
-                element={<HomeFashion/>}
+                element={<Home/>}
               />
               {/* Selected Pages */}
               <Route
                 path={process.env.PUBLIC_URL + "/home"}
                 element={<Home/>}
-              />
+              /> 
               {/* Homepages */}
               <Route
                 path={process.env.PUBLIC_URL + "/home-fashion"}

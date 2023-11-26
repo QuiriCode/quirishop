@@ -2,25 +2,25 @@
   {
     "id": 1,
     "image": "/assets/img/icon-img/support-1.png",
-    "title": "Free Shipping",
-    "subtitle": "Free shipping on all order"
+    "title": "Ücretsiz Kargo",
+    "subtitle": "300₺ Üstü Siparişlerinize Ücretsiz Kargo Fırsatı"
   },
   {
     "id": 2,
     "image": "/assets/img/icon-img/support-2.png",
-    "title": "Support 24/7",
-    "subtitle": "Free shipping on all order"
+    "title": "Teknik Destek",
+    "subtitle": "7 Gün 24 Saat Müşteri Hizmetleri"
   },
   {
     "id": 3,
     "image": "/assets/img/icon-img/support-3.png",
-    "title": "Money Return",
-    "subtitle": "Free shipping on all order"
+    "title": "İade Hakkı",
+    "subtitle": "7 Gün İçerisinde Ücretsiz İade Hakkı"
   },
   {
     "id": 4,
     "image": "/assets/img/icon-img/support-4.png",
-    "title": "Order Discount",
-    "subtitle": "Free shipping on all order"
+    "title": "Mükemmel İndirimler",
+    "subtitle": "Bir Çok Üründe Kaçırılmayacak Fırsatlar"
   }
 ]

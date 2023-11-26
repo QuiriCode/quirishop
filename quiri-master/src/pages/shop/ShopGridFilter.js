@@ -8,6 +8,7 @@ import LayoutOne from '../../layouts/LayoutOne';
 import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import ShopTopbarFilter from '../../wrappers/product/ShopTopbarFilter';
 import ShopProducts from '../../wrappers/product/ShopProducts';
+import {t} from "i18next"
 
 const ShopGridFilter = () => {
     const [layout, setLayout] = useState('grid three-column');
@@ -57,8 +58,8 @@ const ShopGridFilter = () => {
                 {/* breadcrumb */}
                 <Breadcrumb 
                     pages={[
-                        {label: "Home", path: process.env.PUBLIC_URL + "/" },
-                        {label: "Shop", path: process.env.PUBLIC_URL + pathname }
+                        {label: t("home"), path: process.env.PUBLIC_URL + "/" },
+                        {label: t("shop"), path: process.env.PUBLIC_URL + pathname }
                     ]} 
                 />
 
