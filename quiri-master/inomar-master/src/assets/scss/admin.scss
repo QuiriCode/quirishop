@@ -1,0 +1,33 @@
+.image-thumbnail {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-thumbnail {
+  position: relative;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.image-thumbnail img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.image-thumbnail button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
