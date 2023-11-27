@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import { EffectFade, Thumbs } from 'swiper';
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";

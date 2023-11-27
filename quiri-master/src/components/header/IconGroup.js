@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
-import React from 'react';
 import MenuCart from "./sub-components/MenuCart";
 
 const IconGroup = ({ iconWhiteClass }) => {

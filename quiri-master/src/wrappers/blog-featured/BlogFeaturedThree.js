@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import clsx from "clsx";
-import React from "react";import blogFeaturedThreeData from "../../data/blog-featured/blog-featured.json";
+import React from "react";
+import clsx from "clsx";import blogFeaturedThreeData from "../../data/blog-featured/blog-featured.json";
 import BlogFeaturedThreeSingle from "../../components/blog-featured/BlogFeaturedThreeSingle";
 import SectionTitle from "../../components/section-title/SectionTitle";
 

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import clsx from "clsx";
-import React from "react";import { EffectFade } from 'swiper';
+import React from "react";
+import clsx from "clsx";import { EffectFade } from 'swiper';
 import Swiper, { SwiperSlide } from "../../components/swiper";
 import sliderData from "../../data/hero-sliders/hero-slider-thirty-one.json";
 import HeroSliderThirtyOneSingle from "../../components/hero-slider/HeroSliderThirtyOneSingle.js";

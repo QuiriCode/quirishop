@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { setCurrency } from "../../../store/slices/currency-slice"

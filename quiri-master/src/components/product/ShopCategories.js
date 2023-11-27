@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import React from "react";
 
 import { setActiveSort } from "../../helpers/product";
 import {t} from "i18next"

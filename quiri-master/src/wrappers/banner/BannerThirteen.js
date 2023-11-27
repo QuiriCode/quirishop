@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import React from "react";
 
 import bannerData from "../../data/banner/banner-thirteen.json";
 import BannerThirteenSingle from "../../components/banner/BannerThirteenSingle.js";

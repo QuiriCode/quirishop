@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import React from "react";
 import HeaderFour from "../wrappers/header/HeaderFour";
 import FooterTwo from "../wrappers/footer/FooterTwo";
 import ScrollToTop from "../components/scroll-to-top"

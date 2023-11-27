@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import clsx from "clsx";
-import React from "react";import Tab from "react-bootstrap/Tab";
+import React from "react";
+import clsx from "clsx";import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import ProductSliderFive from "./ProductSliderFive";
 

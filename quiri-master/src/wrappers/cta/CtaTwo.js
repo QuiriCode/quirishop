@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import React from "react";
 import clsx from "clsx";
-import React from "react";import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CtaTwo = ({ spaceTopClass, spaceBottomClass }) => {
   return (

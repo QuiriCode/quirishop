@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import clsx from "clsx";
 import React from "react";
+import clsx from "clsx";
 const TestimonialOneSingle = ({ data, testimonialClass }) => {
   return (
     <div className={clsx(testimonialClass || "single-testimonial", "text-center")}>

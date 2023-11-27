@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import clsx from "clsx";
 import React from "react";
+import clsx from "clsx";
 const SectionTitleSix = ({ sectionTitle, spaceBottomClass, positionClass }) => {
   return (
     <div className={clsx("section-title-6", spaceBottomClass)}>

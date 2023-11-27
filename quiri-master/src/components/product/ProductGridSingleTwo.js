@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
+import React from "react";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import clsx from "clsx";
-import React from 'react';
 import { getDiscountPrice } from "../../helpers/product";
 import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import React from "react";
 
 import ProductGridTwo from "./ProductGridTwo";
 import SectionTitleTwo from "../../components/section-title/SectionTitleTwo";
