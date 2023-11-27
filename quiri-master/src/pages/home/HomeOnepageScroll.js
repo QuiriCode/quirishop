@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, React } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../../components/seo";
 import sliderData from "../../data/hero-sliders/scroll-slider.json";

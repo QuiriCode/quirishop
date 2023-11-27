@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, React } from "react";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import FeatureIconFour from "../../wrappers/feature-icon/FeatureIconFour";

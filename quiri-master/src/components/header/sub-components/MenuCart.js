@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, React } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDiscountPrice } from "../../../helpers/product";

@@ -1,4 +1,4 @@
-import { Fragment } from "react"; 
+import { Fragment, React } from "react"; 
 import { useLocation } from "react-router-dom"; 
 import Accordion from "react-bootstrap/Accordion";
 import SEO from "../../components/seo";

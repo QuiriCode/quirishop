@@ -1,4 +1,4 @@
-import { Fragment } from "react"; 
+import { Fragment, React } from "react"; 
 import { useSelector } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import SEO from "../../components/seo";
