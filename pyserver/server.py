@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import logging
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import psycopg2
@@ -8,7 +9,16 @@ import re
 import requests
 
 app = Flask(__name__)
+
+logging.basicConfig(level=logging.INFO)
 CORS(app)
+
+@app.before_request
+def log_request_info():
+    app.logger.info('Headers: %s', request.headers)
+    app.logger.info('Body: %s', request.get_data())
+
+
 db_password = os.environ.get('DATABASE_PASSWORD')
 # PostgreSQL veritabanı bağlantısı için gerekli yapılandırma
 db_conn = psycopg2.connect(
@@ -424,4 +434,8 @@ def search_products():
         return jsonify(error='An error occurred while fetching search results.'), 500
 
 if __name__ == '__main__':
+    handler = logging.FileHandler('app.log')  # Logları app.log dosyasına yaz
+    handler.setLevel(logging.INFO)
+    app.logger.addHandler(handler)
     app.run(port=5000)
+
