@@ -1,4 +1,4 @@
-CREATE TABLE products (
+CREATE TABLE IF NOT EXISTS products (
     id SERIAL PRIMARY KEY,
     barcode VARCHAR(255) UNIQUE,
     name VARCHAR(255) NOT NULL,
@@ -16,29 +16,29 @@ CREATE TABLE products (
     linkedinurl VARCHAR(255)
 );
 
-CREATE TABLE categories (
+CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL
 );
 
-CREATE TABLE productcategories (
+CREATE TABLE IF NOT EXISTS productcategories (
     productid INT REFERENCES products(id) ON DELETE CASCADE,
     categoryid INT REFERENCES categories(id) ON DELETE CASCADE,
     PRIMARY KEY (productid, categoryid)
 );
 
-CREATE TABLE tags (
+CREATE TABLE IF NOT EXISTS tags (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL
 );
 
-CREATE TABLE producttags (
+CREATE TABLE IF NOT EXISTS producttags (
     productid INT REFERENCES products(id) ON DELETE CASCADE,
     tagid INT REFERENCES tags(id) ON DELETE CASCADE,
     PRIMARY KEY (productid, tagid)
 );
 
-CREATE TABLE variations (
+CREATE TABLE IF NOT EXISTS variations (
     id SERIAL PRIMARY KEY,
     productid INT REFERENCES products(id) ON DELETE CASCADE,
     color VARCHAR(255) NOT NULL,
@@ -47,14 +47,14 @@ CREATE TABLE variations (
     base64content BYTEA NOT NULL
 );
 
-CREATE TABLE sizes (
+CREATE TABLE IF NOT EXISTS sizes (
     id SERIAL PRIMARY KEY,
     variationid INT REFERENCES variations(id) ON DELETE CASCADE,
     name VARCHAR(255) NOT NULL,
     stock INT CHECK (stock >= 0)
 );
 
-CREATE TABLE productimages (
+CREATE TABLE IF NOT EXISTS productimages (
     id SERIAL PRIMARY KEY,
     productid INT REFERENCES products(id) ON DELETE CASCADE,
     filename VARCHAR(255) NOT NULL,
