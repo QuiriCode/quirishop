@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
-import React from 'react';
 import Api from "../../Api"
 
 const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
