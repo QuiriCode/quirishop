@@ -2,6 +2,7 @@
 import Swiper, { SwiperSlide } from "../../components/swiper";
 import testimonialData from "../../data/testimonial/testimonial-three.json";
 import TestimonialThreeSingle from "../../components/testimonial/TestimonialThreeSingle.js";
+import React from "react";
 
 const TestimonialThree = () => {
   // swiper slider settings
