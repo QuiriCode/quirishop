@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import clsx from "clsx"
-import Swiper, { SwiperSlide } from "../../components/swiper";
+import clsx from "clsx";
+import React from "react";import Swiper, { SwiperSlide } from "../../components/swiper";
 import testimonialData from "../../data/testimonial/testimonial-one.json";
 import TestimonialTwoSingle from "../../components/testimonial/TestimonialTwoSingle.js";
 

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import clsx from "clsx"
-import bannerData from "../../data/banner/banner-fifteen.json";
+import clsx from "clsx";
+import React from "react";import bannerData from "../../data/banner/banner-fifteen.json";
 import BannerFifteenSingle from "../../components/banner/BannerFifteenSingle.js";
 
 const BannerFifteen = ({ spaceTopClass, spaceBottomClass }) => {

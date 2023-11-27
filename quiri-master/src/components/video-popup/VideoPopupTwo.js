@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ModalVideo from "react-modal-video";
-import clsx from "clsx"
-
+import clsx from "clsx";
+import React from "react";
 const VideoPopupTwo = ({ spaceBottomClass }) => {
   const [modalStatus, isOpen] = useState(false);
   return (
