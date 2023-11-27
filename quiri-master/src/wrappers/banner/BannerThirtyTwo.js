@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import bannerData from "../../data/banner/banner-thirty-two.json";
 import BannerThirtyTwoSingle from "../../components/banner/BannerThirtyTwoSingle.js";
 

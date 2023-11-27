@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 
 const FeatureIconSevenSingle = ({ data, spaceBottomClass, textAlignClass }) => {
   return (

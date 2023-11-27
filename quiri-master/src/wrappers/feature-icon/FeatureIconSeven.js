@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import featureIconData from "../../data/feature-icons/feature-icon-seven.json";
 import FeatureIconSevenSingle from "../../components/feature-icon/FeatureIconSevenSingle.js";
 

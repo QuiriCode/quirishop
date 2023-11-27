@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import featureIconData from "../../data/feature-icons/feature-icon-eight.json";
 import FeatureIconEightSingle from "../../components/feature-icon/FeatureIconEightSingle.js";
 

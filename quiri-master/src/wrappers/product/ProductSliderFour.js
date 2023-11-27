@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import SectionTitleSeven from "../../components/section-title/SectionTitleSeven";
 import ProductGridNine from "./ProductGridNine";
 

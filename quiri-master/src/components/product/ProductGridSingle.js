@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Rating from "./sub-components/ProductRating";

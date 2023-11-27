@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import blogFeaturedData from "../../data/blog-featured/blog-featured-two.json";
 import BlogFeaturedSingle from "../../components/blog-featured/BlogFeaturedSingle";
 import SectionTitle from "../../components/section-title/SectionTitle";

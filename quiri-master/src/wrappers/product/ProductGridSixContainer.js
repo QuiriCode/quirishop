@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import React from 'react';
 import SectionTitleSix from "../../components/section-title/SectionTitleSix";
 import ProductGridSix from "./ProductGridSix";
 

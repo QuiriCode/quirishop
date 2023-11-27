@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import funFactData from "../../data/fun-fact/fun-fact-one.json";
 import FunFactOneSingle from "../../components/fun-fact/FunFactOneSingle.js";
 

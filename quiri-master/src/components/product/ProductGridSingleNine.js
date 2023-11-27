@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Fragment, useState } from "react";
 import clsx from "clsx";
+import React from 'react';
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getDiscountPrice } from "../../helpers/product";

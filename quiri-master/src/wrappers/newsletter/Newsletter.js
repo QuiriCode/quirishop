@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import SubscribeEmail from "../../components/newsletter/SubscribeEmail";
 
 const Newsletter = ({

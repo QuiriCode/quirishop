@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import { EffectFade, Thumbs } from "swiper";
 import AnotherLightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";

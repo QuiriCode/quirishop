@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import React from 'react';
 import PropTypes from "prop-types";
 import useCountdown from "../../hooks/use-countdown";
 import DateTimeDisplay from "./date-time-display"

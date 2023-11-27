@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import clsx from "clsx";
+import React from 'react';
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 

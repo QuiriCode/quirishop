@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import Swiper, { SwiperSlide } from "../../components/swiper";
 import categoryData from "../../data/category/category-four.json";
 import CategoryFourSingle from "../../components/category/CategoryFourSingle.js";

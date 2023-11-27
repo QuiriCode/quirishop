@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import React from 'react';
 import textGridData from "../../data/text-grid/text-grid-one.json";
 import TextGridOneSingle from "../../components/text-grid/TextGridOneSingle.js";
 
