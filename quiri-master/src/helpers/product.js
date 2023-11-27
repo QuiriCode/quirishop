@@ -1,3 +1,4 @@
+import React from "react";
 // get products
 export const getProducts = (products, category, type, limit) => {
   console.log("products",products);
