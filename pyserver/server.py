@@ -36,7 +36,7 @@ def save_image_from_base64(base64content, filename):
     with open(filename, "wb") as file:
         file.write(base64.b64decode(base64content))
 
-@app.route('/products', methods=['DELETE'])
+@app.route('/api/products', methods=['DELETE'])
 def delete_products():
     product_id = request.headers.get('productid')
 
@@ -68,7 +68,7 @@ def delete_products():
     return jsonify(message='Products deleted successfully'), 200
 
 
-@app.route('/listcategories', methods=['GET'])
+@app.route('/api/listcategories', methods=['GET'])
 def list_categories():
     try:
         db_cursor.execute("SELECT id, name FROM categories")
@@ -99,7 +99,7 @@ def list_categories():
         print('Error listing categories:', e)
         return jsonify(error='An error occurred while listing categories.'), 500
 
-@app.route('/categories', methods=['GET'])
+@app.route('/api/categories', methods=['GET'])
 def get_categories():
     try:
         db_cursor.execute("SELECT * FROM categories")
@@ -131,7 +131,7 @@ def get_categories():
         return jsonify(error='An error occurred while getting categories.'), 500
 
 
-@app.route('/products', methods=['POST'])
+@app.route('/api/products', methods=['POST'])
 def addProduct():
     data = request.get_json()  # Gelen isteğin JSON verisini al
     product = data  # Product bilgisini al, varsayılan olarak boş bir sözlük kullan
@@ -288,7 +288,7 @@ def add_sizes(variationid, sizes):
                 INSERT INTO sizes (variationid, name, stock)
                 VALUES (%s, %s, %s);
             """, (variationid, name, stock))
-@app.route('/products', methods=['GET'])
+@app.route('/api/products', methods=['GET'])
 def search_products():
     try:
         
