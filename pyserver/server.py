@@ -420,7 +420,7 @@ def search_products():
         }
         return jsonify(response), 200
     except Exception as e:
-        print('Error fetching search results:', e)
+        print('Error fetching search results2:', e)
         return jsonify(error='An error occurred while fetching search results.'), 500
 
 if __name__ == '__main__':
