@@ -15,7 +15,7 @@ db_conn = psycopg2.connect(
     user='postgres',
     host='localhost',
     database='quiri',
-    password='12345',
+    password='tGTCX!(<lZOnCWm',
     port=5432
 )
 db_cursor = db_conn.cursor()
