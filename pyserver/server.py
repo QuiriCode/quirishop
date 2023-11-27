@@ -9,13 +9,13 @@ import requests
 
 app = Flask(__name__)
 CORS(app)
-
+db_password = os.environ.get('DATABASE_PASSWORD')
 # PostgreSQL veritabanı bağlantısı için gerekli yapılandırma
 db_conn = psycopg2.connect(
     user='postgres',
     host='localhost',
     database='quiri',
-    password='tGTCX!(<lZOnCWm',
+    password=db_password,
     port=5432
 )
 db_cursor = db_conn.cursor()
