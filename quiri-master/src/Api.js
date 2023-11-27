@@ -3,7 +3,7 @@ import axios from "axios";
 
 class Api {
   constructor() {
-    this.baseUrl = `${window.location.hostname}:8000`;
+    this.baseUrl = '/api';
   }
 
   async addProduct(data) {
