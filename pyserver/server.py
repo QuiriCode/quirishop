@@ -26,6 +26,8 @@ else:
 print("Connecting to {db_host}...")
 
 db_password = os.environ.get('DATABASE_PASSWORD')
+if db_password == None:
+    db_password = 'tGTCX!(<lZOnCWm'
 db_conn = psycopg2.connect(
     user='postgres',
     host=db_host,
