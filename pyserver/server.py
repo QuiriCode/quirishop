@@ -19,10 +19,10 @@ def log_request_info():
     app.logger.info('Headers: %s', request.headers)
     app.logger.info('Body: %s', request.get_data())
 
-if len(sys.argv) > 1 and sys.argv[1] == 'prod':
-    db_host = 'quiri.shop'
-else:
+if len(sys.argv) > 1 and sys.argv[1] == 'dev':
     db_host = 'localhost'
+else:
+    db_host = 'quiri.shop'
 print("Connecting to ",db_host)
 
 db_password = os.environ.get('DATABASE_PASSWORD')
