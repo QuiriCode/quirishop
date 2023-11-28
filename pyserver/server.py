@@ -27,22 +27,14 @@ print("Connecting to ",db_host)
 
 db_password = os.environ.get('DATABASE_PASSWORD')
 if db_password == None:
-    db_conn = psycopg2.connect(
-        user='postgres',
-        host=db_host,
-        database='quiri',
-        password='tGTCX!(<lZOnCWm',
-        port=5432
-    )
-else:
-    db_conn = psycopg2.connect(
-        user='postgres',
-        host=db_host,
-        database='quiri',
-        password= db_password,
-        port=5432
-    )
-    
+    db_password = 'tGTCX!(<lZOnCWm'
+db_conn = psycopg2.connect(
+    user='postgres',
+    host=db_host,
+    database='quiri',
+    password=db_password,
+    port=5432
+)
 db_cursor = db_conn.cursor()
 
 UPLOAD_FOLDER = 'images'
