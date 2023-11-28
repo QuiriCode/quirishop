@@ -1,7 +1,9 @@
 import { EffectFade } from 'swiper';
 import Swiper, { SwiperSlide } from "../../components/swiper";
-import heroSliderData from "../../data/hero-sliders/hero-slider.json";
 import HeroSliderSingle from "../../components/hero-slider/HeroSliderSingle.js";
+import Api from '../../Api'
+
+const api = new Api()
 
 const params = {
   effect: "fade",
@@ -15,6 +17,7 @@ const params = {
   autoHeight: false
 };
 
+const heroSliderData = api.getHighlights();
 const HeroSlider = () => {
   return (
     <div className="slider-area">

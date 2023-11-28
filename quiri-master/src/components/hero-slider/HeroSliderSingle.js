@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
+import {t} from "i18next"
 
 const HeroSliderSingle = ({ data }) => {
   return (
@@ -16,7 +17,7 @@ const HeroSliderSingle = ({ data }) => {
                   className="animated"
                   to={process.env.PUBLIC_URL + data.url}
                 >
-                  SHOP NOW
+                  {t("details")}
                 </Link>
               </div>
             </div>

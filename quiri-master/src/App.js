@@ -7,6 +7,7 @@ import AdminPanel from "./pages/admin/AdminLayout";
 import AdminCategories from "./pages/admin/AdminCategories";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminHighlights from "./pages/admin/AdminHighlights";
 
 //selected pages
 const Home = lazy(() => import("./pages/home/Home"));
@@ -414,6 +415,7 @@ const App = () => {
               <Route path="/admin/adminproducts" element={<AdminProducts/>} />
               <Route path="/admin/adminusers" element={<AdminUsers/>} />
               <Route path="/admin/admincategories" element={<AdminCategories/>} />
+              <Route path="/admin/adminhighlights" element={<AdminHighlights/>} />
 
               <Route path="*" element={<NotFound/>} />
             </Routes>

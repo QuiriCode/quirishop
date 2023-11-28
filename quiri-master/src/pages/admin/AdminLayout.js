@@ -23,6 +23,9 @@ const AdminLayout = ({ children }) => {
           <Menu.Item key="3" icon={<TagOutlined />}>
             <Link to="/admin/admincategories">Kategoriler</Link>
           </Menu.Item>
+          <Menu.Item key="4" icon={<TagOutlined />}>
+            <Link to="/admin/adminhighlights">Öne Çıkanlar</Link>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: "50px" }}>{children}</Content>

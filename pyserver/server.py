@@ -12,7 +12,8 @@ import requests
 app = Flask(__name__)
 
 logging.basicConfig(level=logging.INFO)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "https://quiri.shop"}})
+
 
 @app.before_request
 def log_request_info():
@@ -417,6 +418,73 @@ def search_products():
     except Exception as e:
         print('Error fetching search results:', e)
         return jsonify(error='An error occurred while fetching search results.'), 500
+
+
+#Highlights CRUD
+
+@app.route('/api/highlights', methods=['POST'])
+def add_highlight():
+    try:
+        data = request.json
+        db_cursor.execute("""
+            INSERT INTO highlights (productid, title, subtitle, url, filename, mimetype, base64content)
+            VALUES (%s, %s, %s, %s, %s, %s, %s);
+        """, (data['productid'], data['title'], data['subtitle'], data['url'], data['filename'], data['mimetype'], data['base64content']))
+        db_conn.commit()
+        return jsonify(success='Highlight added successfully.'), 200
+    except Exception as e:
+        print('Error adding highlight:', e)
+        return jsonify(error='An error occurred while adding the highlight.'), 500
+
+@app.route('/api/highlights/<int:highlight_id>', methods=['DELETE'])
+def delete_highlight(highlight_id):
+    try:
+        db_cursor.execute("DELETE FROM highlights WHERE id = %s;", (highlight_id,))
+        db_conn.commit()
+        return jsonify(success='Highlight deleted successfully.'), 200
+    except Exception as e:
+        print('Error deleting highlight:', e)
+        return jsonify(error='An error occurred while deleting the highlight.'), 500
+
+@app.route('/api/highlights/<int:highlight_id>', methods=['PUT'])
+def update_highlight(highlight_id):
+    try:
+        data = request.json
+        db_cursor.execute("""
+            UPDATE highlights
+            SET productid = %s, title = %s, subtitle = %s, url = %s, filename = %s, mimetype = %s, base64content = %s
+            WHERE id = %s;
+        """, (data['productid'], data['title'], data['subtitle'], data['url'], data['filename'], data['mimetype'], data['base64content'], highlight_id))
+        db_conn.commit()
+        return jsonify(success='Highlight updated successfully.'), 200
+    except Exception as e:
+        print('Error updating highlight:', e)
+        return jsonify(error='An error occurred while updating the highlight.'), 500
+
+@app.route('/api/highlights', methods=['GET'])
+def get_highlights():
+    try:
+        db_cursor.execute("SELECT * FROM highlights")
+        highlight_records = db_cursor.fetchall()
+
+        highlights = []
+        for record in highlight_records:
+            highlight = {
+                'id': record[0],
+                'productid': record[1],
+                'title': record[2],
+                'subtitle': record[3],
+                'url': record[4],
+                'filename': record[5],
+                'mimetype': record[6],
+                'base64content': record[7]
+            }
+            highlights.append(highlight)
+        return jsonify(highlights), 200
+    except Exception as e:
+        print('Error getting highlights:', e)
+        return jsonify(error='An error occurred while getting highlights.'), 500
+
 
 if __name__ == '__main__':
     handler = logging.FileHandler('app.log')  # Logları app.log dosyasına yaz

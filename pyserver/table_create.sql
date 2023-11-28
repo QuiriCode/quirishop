@@ -61,3 +61,15 @@ CREATE TABLE IF NOT EXISTS productimages (
     mimetype VARCHAR(255) NOT NULL,
     base64content BYTEA NOT NULL
 );
+
+
+CREATE TABLE IF NOT EXISTS highlights (
+    id SERIAL PRIMARY KEY,
+    productid INT,
+    title VARCHAR(255),
+    subtitle VARCHAR(255),
+    url VARCHAR(4000),
+    filename VARCHAR(255),
+    mimetype VARCHAR(255),
+    base64content BYTEA
+);

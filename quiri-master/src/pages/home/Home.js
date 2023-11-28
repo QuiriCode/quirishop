@@ -10,8 +10,8 @@ const HomeFashion = () => {
   return (
     <Fragment>
       <SEO
-        titleTemplate="Anasayfa"
-        description="Fashion home of quiri react minimalist eCommerce template."
+        titleTemplate="Her alışveriş biraz daha mama!"
+        description="Quiri ile yapacağınız her alışverişte patili dostlarımızın mama havuzunu biraz daha doldurun! Üstelik ücretsiz kargo ve esnek iade koşulları da sizi bekliyor!"
       />
       <Layout
       headerTop="visible"
