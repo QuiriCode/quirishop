@@ -23,7 +23,7 @@ db_password = os.environ.get('DATABASE_PASSWORD')
 # PostgreSQL veritabanı bağlantısı için gerekli yapılandırma
 db_conn = psycopg2.connect(
     user='postgres',
-    host='localhost',
+    host='quiri.shop',
     database='quiri',
     password=db_password,
     port=5432
@@ -83,17 +83,6 @@ def list_categories():
                 'name': category_name
             }
             categories.append(category)
-        
-        category = {
-            'id': 1,
-            'name': "Size Özel"
-        }
-        categories.append(category)
-        category = {
-            'id': 2,
-            'name': "Erkek"
-        }
-        categories.append(category)
         return jsonify(categories=categories), 200
     except Exception as e:
         print('Error listing categories:', e)
@@ -114,17 +103,6 @@ def get_categories():
                 'name': category_name
             }
             categories.append(category)
-        
-        category = {
-            'id': 1,
-            'name': "Size Özel"
-        }
-        categories.append(category)
-        category = {
-            'id': 2,
-            'name': "Erkek"
-        }
-        categories.append(category)
         return jsonify(categories=categories), 200
     except Exception as e:
         print('Error getting categories:', e)

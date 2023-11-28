@@ -3,7 +3,7 @@ import axios from "axios";
 
 class Api {
   constructor() {
-    this.baseUrl = '/api';
+    this.baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   }
 
   async addProduct(data) {
