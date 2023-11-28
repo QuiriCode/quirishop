@@ -23,7 +23,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'prod':
     db_host = 'quiri.shop'
 else:
     db_host = 'localhost'
-print("Connecting to {db_host}...")
+print("Connecting to ",db_host)
 
 db_password = os.environ.get('DATABASE_PASSWORD')
 if db_password == None:
