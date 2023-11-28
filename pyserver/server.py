@@ -6,6 +6,7 @@ import psycopg2
 import os
 import base64
 import re
+import sys
 import requests
 
 app = Flask(__name__)
@@ -18,12 +19,16 @@ def log_request_info():
     app.logger.info('Headers: %s', request.headers)
     app.logger.info('Body: %s', request.get_data())
 
+if len(sys.argv) > 1 and sys.argv[1] == 'prod':
+    db_host = 'quiri.shop'
+else:
+    db_host = 'localhost'
+print("Connecting to {db_host}...")
 
 db_password = os.environ.get('DATABASE_PASSWORD')
-# PostgreSQL veritabanı bağlantısı için gerekli yapılandırma
 db_conn = psycopg2.connect(
     user='postgres',
-    host='quiri.shop',
+    host=db_host,
     database='quiri',
     password=db_password,
     port=5432
