@@ -1,5 +1,4 @@
-import React, { Fragment } from "react"; 
-import { useSelector } from "react-redux";
+import React, { Fragment, useState, useEffect } from "react"; 
 import { useParams, useLocation } from "react-router-dom";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
@@ -8,12 +7,39 @@ import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import {t} from "i18next"
+import Api from '../../Api'; // Varsayılan API yapılandırmanız
+
+const api = new Api();
 const Product = () => {
   let { pathname } = useLocation();
   let { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const firstCategoryName = product?.categories?.[0]?.name;
+
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await api.getProduct(id);
+        if (response && response.products && response.products.length > 0) {
+          setProduct(response.products[0]);
+          console.log(response.products[0]);
+        } else {
+          console.log("Ürün bulunamadı");
+        }
+      } catch (error) {
+        console.error("Ürün bilgisi alınırken hata oluştu", error);
+      }
+    };
+    
+    fetchProduct();
+  }, [id]);
   
-  const { products } = useSelector((state) => state.product.products);
-  const product = products.find(product => product.id==id);
+
+  // Ürün yüklenene kadar bir yükleme ekranı veya benzeri bir şey gösterilebilir
+  if (!product) return <div>Loading...</div>;
+
+  
   return (
     <Fragment>
       <SEO
@@ -40,13 +66,14 @@ const Product = () => {
         {/* product description tab */}
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
-          productFullDesc={product.fullDescription}
+          productFullDesc={product.fulldescription}
         />
 
         {/* related product slider */}
         <RelatedProductSlider
         spaceBottomClass="pb-95"
-        category={product.category[0].name}
+        firstCategoryName
+        
       />
       </LayoutOne>
     </Fragment>

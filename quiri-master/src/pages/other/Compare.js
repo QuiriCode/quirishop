@@ -141,7 +141,7 @@ const Compare = () => {
                             {compareItems.map((compareItem, key) => {
                               const discountedPrice = getDiscountPrice(
                                 compareItem.price,
-                                compareItem.discount
+                                compareItem.discountpercentage
                               );
                               const finalProductPrice = (
                                 compareItem.price * currency.currencyRate
@@ -179,8 +179,8 @@ const Compare = () => {
                               return (
                                 <td className="product-desc" key={key}>
                                   <p>
-                                    {compareItem.shortDescription
-                                      ? compareItem.shortDescription
+                                    {compareItem.shortdescription
+                                      ? compareItem.shortdescription
                                       : "N/A"}
                                   </p>
                                 </td>

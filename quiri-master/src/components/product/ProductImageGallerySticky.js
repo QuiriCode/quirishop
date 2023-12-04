@@ -5,14 +5,14 @@ import React from "react";
 const productImageGallerySticky = ({ product }) => {
   return (
     <div className="product-large-image-wrapper product-large-image-wrapper--sticky">
-      {product.discount || product.new ? (
+      {product.discountpercentage || product.newyn ? (
         <div className="product-img-badges">
-          {product.discount ? (
-            <span className="pink">-{product.discount}%</span>
+          {product.discountpercentage ? (
+            <span className="pink">-{product.discountpercentage}%</span>
           ) : (
             ""
           )}
-          {product.new ? <span className="purple">New</span> : ""}
+          {product.newyn ? <span className="purple">New</span> : ""}
         </div>
       ) : (
         ""

@@ -13,9 +13,8 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
     const fetchCategories = async () => {
       try {
         const api = new Api();
-        const categories = await api.getCategories();
-        setListCategories(categories);
-        console.log(categories);
+        const response = await api.getCategories();
+        setListCategories(response.categories);
       } catch (error) {
         console.error("Kategoriler alınırken hata oluştu.", error);
       }

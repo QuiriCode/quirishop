@@ -132,7 +132,7 @@ function ProductModal({ product, currency, discountedPrice, finalProductPrice, f
               ""
             )}
             <div className="pro-details-list">
-              <p>{product.shortDescription}</p>
+              <p>{product.shortdescription}</p>
             </div>
 
             {product.variations ? (

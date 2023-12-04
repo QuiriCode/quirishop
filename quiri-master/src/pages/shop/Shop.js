@@ -9,7 +9,11 @@ import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
-import {t} from "i18next"
+import { t } from "i18next"
+import Api from '../../Api'
+
+
+const api = new Api();
 
 const Shop = () => {
     const [layout, setLayout] = useState('grid three-column');
@@ -21,7 +25,8 @@ const Shop = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentData, setCurrentData] = useState([]);
     const [sortedProducts, setSortedProducts] = useState([]);
-    const { products } = useSelector((state) => state.product.products);
+    const [products, setProducts] = useState([]); // API'den gelen ürünler için yeni bir state
+    const [loading, setLoading] = useState(false);
     const pageLimit = 15;
     let { pathname } = useLocation();
 
@@ -39,14 +44,76 @@ const Shop = () => {
         setFilterSortValue(sortValue);
     }
 
+    const fetchProducts = async () => {
+        setLoading(true); // Set loading to true when fetching starts
+        try {
+            const response = await api.getListProducts();
+            setProducts(response.products);
+        } catch (error) {
+            console.error("Ürünler yüklenirken hata oluştu", error);
+        }
+        setLoading(false); // Set loading to false when fetching ends
+    };
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
     useEffect(() => {
         let sortedProducts = getSortedProducts(products, sortType, sortValue);
         const filterSortedProducts = getSortedProducts(sortedProducts, filterSortType, filterSortValue);
         sortedProducts = filterSortedProducts;
         setSortedProducts(sortedProducts);
         setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
-    }, [offset, products, sortType, sortValue, filterSortType, filterSortValue ]);
+    }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
+    if (loading) {
+        return (
+            <Layout headerTop="visible">
+            {/* breadcrumb */}
+            <Breadcrumb
+                pages={[
+                    { label: t("home"), path: process.env.PUBLIC_URL + "/" },
+                    { label: t("products"), path: process.env.PUBLIC_URL + pathname }
+                ]}
+            />
+
+            <div className="shop-area pt-95 pb-100">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-3 order-2 order-lg-1">
+                            {/* shop sidebar */}
+                            <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30" />
+                        </div>
+                        <div className="col-lg-9 order-1 order-lg-2">
+                            {/* shop topbar default */}
+                            <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
+
+                            <div className="quiri-preloader">
+                                <span></span>
+                                <span></span>
+                            </div>
+                            {/* shop product pagination */}
+                            <div className="pro-pagination-style text-center mt-30">
+                                <Paginator
+                                    totalRecords={sortedProducts.length}
+                                    pageLimit={pageLimit}
+                                    pageNeighbours={2}
+                                    setOffset={setOffset}
+                                    currentPage={currentPage}
+                                    setCurrentPage={setCurrentPage}
+                                    pageContainerClass="mb-0 mt-0"
+                                    pagePrevText="«"
+                                    pageNextText="»"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </Layout>
+        );
+    }
     return (
         <Fragment>
             <SEO
@@ -55,11 +122,11 @@ const Shop = () => {
             />
             <Layout headerTop="visible">
                 {/* breadcrumb */}
-                <Breadcrumb 
+                <Breadcrumb
                     pages={[
-                        {label: t("home"), path: process.env.PUBLIC_URL + "/" },
-                        {label: t("products"), path: process.env.PUBLIC_URL + pathname }
-                    ]} 
+                        { label: t("home"), path: process.env.PUBLIC_URL + "/" },
+                        { label: t("products"), path: process.env.PUBLIC_URL + pathname }
+                    ]}
                 />
 
                 <div className="shop-area pt-95 pb-100">
@@ -67,7 +134,7 @@ const Shop = () => {
                         <div className="row">
                             <div className="col-lg-3 order-2 order-lg-1">
                                 {/* shop sidebar */}
-                                <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30"/>
+                                <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30" />
                             </div>
                             <div className="col-lg-9 order-1 order-lg-2">
                                 {/* shop topbar default */}

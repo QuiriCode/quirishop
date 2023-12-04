@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // admin panel
 import AdminPanel from "./pages/admin/AdminLayout";
-import AdminCategories from "./pages/admin/AdminCategories";
+import MasterData from "./pages/admin/MasterData";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminHighlights from "./pages/admin/AdminHighlights";
+import { AppSettingsProvider } from './data/AppSettingsContext';
 
 //selected pages
 const Home = lazy(() => import("./pages/home/Home"));
@@ -118,6 +119,7 @@ const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 const App = () => {
   return (
+    <AppSettingsProvider>
       <Router>
         <ScrollToTop>
           <Suspense
@@ -414,7 +416,7 @@ const App = () => {
               <Route path="/admin" element={<AdminPanel />} />
               <Route path="/admin/adminproducts" element={<AdminProducts/>} />
               <Route path="/admin/adminusers" element={<AdminUsers/>} />
-              <Route path="/admin/admincategories" element={<AdminCategories/>} />
+              <Route path="/admin/masterdata" element={<MasterData/>} />
               <Route path="/admin/adminhighlights" element={<AdminHighlights/>} />
 
               <Route path="*" element={<NotFound/>} />
@@ -422,6 +424,7 @@ const App = () => {
           </Suspense>
         </ScrollToTop>
       </Router>
+      </AppSettingsProvider>
   );
 };
 

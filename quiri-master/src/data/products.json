@@ -10,9 +10,9 @@
           ],
           "affiliateLink":"asd",
           "stock":5,
-          "discount": "10.00",
+          "discountpercentage": "10.00",
           "facebookurl": "https://www.facebook.com/example",
-          "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...",
+          "fulldescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...",
           "id": 1,
           "images": [
               {
@@ -43,7 +43,7 @@
           "price": "15",
           "rating": 4,
           "saleCount": 54,
-          "shortDescription": "Av macerlarınızın vazgeçilmezi, güvenli çadır.",
+          "shortdescription": "Av macerlarınızın vazgeçilmezi, güvenli çadır.",
           "tag": [
               {
                   "id": 85,

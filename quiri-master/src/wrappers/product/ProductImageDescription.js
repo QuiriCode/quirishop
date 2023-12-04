@@ -15,12 +15,13 @@ const ProductImageDescription = ({ spaceTopClass, spaceBottomClass, galleryType,
   const { compareItems } = useSelector((state) => state.compare);
   const wishlistItem = wishlistItems.find(item => item.id == product.id);
   const compareItem = compareItems.find(item => item.id == product.id);
-
-  const discountedPrice = getDiscountPrice(product.price, product.discount);
+  
+  const discountedPrice = getDiscountPrice(product.price, product.discountpercentage);
   const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
   const finalDiscountedPrice = +(
     discountedPrice * currency.currencyRate
   ).toFixed(2);
+
 
   return (
     <div className={clsx("shop-area", spaceTopClass, spaceBottomClass)}>

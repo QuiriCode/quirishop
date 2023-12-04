@@ -63,7 +63,7 @@ const ProductDescriptionInfoSlider = ({
         ""
       )}
       <div className="pro-details-list">
-        <p>{product.shortDescription}</p>
+        <p>{product.shortdescription}</p>
       </div>
 
       {product.variations ? (

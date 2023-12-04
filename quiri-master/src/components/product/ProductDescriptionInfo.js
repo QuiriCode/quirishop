@@ -59,9 +59,9 @@ const ProductDescriptionInfo = ({
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>
       <div className="product-details-price">
-        {product.discount ? (
+        {product.discountpercentage ? (
           <Fragment>
-            <span>{currency.currencySymbol + product.discount}</span>{" "}
+            <span>{currency.currencySymbol + product.discountpercentage}</span>{" "}
             <span className="old">
               {currency.currencySymbol + product.price}
             </span>

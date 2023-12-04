@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { EffectFade } from 'swiper';
 import Swiper, { SwiperSlide } from "../../components/swiper";
 import HeroSliderSingle from "../../components/hero-slider/HeroSliderSingle.js";
@@ -17,8 +18,18 @@ const params = {
   autoHeight: false
 };
 
-const heroSliderData = api.getHighlights();
 const HeroSlider = () => {
+  const [heroSliderData, setHeroSliderData] = useState(null);
+
+  useEffect(() => {
+    const fetchHighlights = async () => {
+      const response = await api.getHighlights();
+      setHeroSliderData(response.highlights);
+    };
+
+    fetchHighlights();
+  }, []);
+
   return (
     <div className="slider-area">
       <div className="slider-active nav-style-1">

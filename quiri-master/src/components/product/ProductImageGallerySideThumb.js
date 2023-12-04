@@ -8,6 +8,8 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Swiper, { SwiperSlide } from "../../components/swiper";
+import { useAppSettings } from '../../data/AppSettingsContext';
+
 
 const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -16,6 +18,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
     src: `data:${img.mimetype};base64,${img.base64content}`,
     key: i,
   }));
+  const appSettings = useAppSettings();
 
   // swiper slider settings
   const gallerySwiperParams = {
@@ -72,14 +75,14 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
           )}
         >
           <div className="product-large-image-wrapper">
-            {product.discount || product.new ? (
+            {product.discountpercentage || product.newyn ? (
               <div className="product-img-badges">
-                {product.discount ? (
-                  <span className="pink">-{product.discount}%</span>
+                {product.discountpercentage ? (
+                  <span className="pink">-{product.discountpercentage}%</span>
                 ) : (
                   ""
                 )}
-                {product.new ? <span className="purple">New</span> : ""}
+                {product.newyn ? <span className="purple">New</span> : ""}
               </div>
             ) : (
               ""
@@ -111,7 +114,15 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                   plugins={[Thumbnails, Zoom, Fullscreen]}
                 />
               </Swiper>
-            ) : null}
+            ) :  (
+              <div className="single-image">
+                <img
+                  src={appSettings.defaultproductimagebase64}
+                  className="img-fluid"
+                  alt=""
+                />
+              </div>
+      )}
           </div>
         </div>
         <div

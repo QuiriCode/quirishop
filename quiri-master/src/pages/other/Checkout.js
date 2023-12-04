@@ -142,7 +142,7 @@ const Checkout = () => {
                             {cartItems.map((cartItem, key) => {
                               const discountedPrice = getDiscountPrice(
                                 cartItem.price,
-                                cartItem.discount
+                                cartItem.discountpercentage
                               );
                               const finalProductPrice = (
                                 cartItem.price * currency.currencyRate

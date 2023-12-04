@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
 import Swiper, { SwiperSlide } from "../../components/swiper";
 import SectionTitle from "../../components/section-title/SectionTitle";
 import ProductGridSingle from "../../components/product/ProductGridSingle";
 import { getProducts } from "../../helpers/product";
+import Api from '../../Api'; 
 
 const settings = {
   loop: false,
@@ -28,15 +29,32 @@ const settings = {
   }
 };
 
-
 const RelatedProductSlider = ({ spaceBottomClass, category }) => {
-  const products = useSelector((state) => state.product.products);
+  const [products, setProducts] = useState([]);
+  const api = new Api();
   const currency = useSelector((state) => state.currency);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
   const compareItems = useSelector((state) => state.compare.compareItems);
   const prods = getProducts(products.products, category, null, 6);
   
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await api.getProductsByCategory(category);
+        if (response && response.products) {
+          setProducts(response.products);
+        }
+      } catch (error) {
+        console.error("Error fetching related products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, [category]);
+
+  // Assuming 'getProductsByCategory' is a method in your API class that fetches products based on category
+
   return (
     <div className={clsx("related-product-area", spaceBottomClass)}>
       <div className="container">
@@ -45,9 +63,9 @@ const RelatedProductSlider = ({ spaceBottomClass, category }) => {
           positionClass="text-center"
           spaceClass="mb-50"
         />
-        {prods?.length ? (
+        {products.length ? (
           <Swiper options={settings}>
-              {prods.map(product => (
+              {products.map(product => (
                 <SwiperSlide key={product.id}>
                   <ProductGridSingle
                     product={product}

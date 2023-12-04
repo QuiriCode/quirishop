@@ -1,15 +1,15 @@
 import React from "react";
 // get products
 export const getProducts = (products, category, type, limit) => {
-  console.log("products",products);
+  if (!Array.isArray(products)) return [];
+
   const finalProducts = category
     ? products.filter(
-        product => product.category.filter(single => single === category)[0]
+        product => product.categories && product.categories.includes(category)
       )
     : products;
-
   if (type && type === "new") {
-    const newProducts = finalProducts.filter(single => single.new);
+    const newProducts = finalProducts.filter(single => single.newyn);
     return newProducts.slice(0, limit ? limit : newProducts.length);
   }
   if (type && type === "bestSeller") {
@@ -21,16 +21,16 @@ export const getProducts = (products, category, type, limit) => {
   }
   if (type && type === "saleItems") {
     const saleItems = finalProducts.filter(
-      single => single.discount && single.discount > 0
+      single => single.discountpercentage && single.discountpercentage > 0
     );
     return saleItems.slice(0, limit ? limit : saleItems.length);
   }
   return finalProducts.slice(0, limit ? limit : finalProducts.length);
 };
 
-// get product discount price
-export const getDiscountPrice = (price, discount) => {
-  return discount && discount > 0 ? price - price * (discount / 100) : null;
+// get product discountpercentage price
+export const getDiscountPrice = (price, discountpercentage) => {
+  return discountpercentage && discountpercentage > 0 ? price - price * (discountpercentage / 100) : null;
 };
 
 // get product cart quantity
@@ -122,37 +122,28 @@ const getIndividualItemArray = array => {
   });
   return individualItemArray;
 };
-
-// get individual categories
 export const getIndividualCategories = products => {
   let productCategories = [];
-  products &&
-    products.map(product => {
-      return (
-        product.category &&
-        product.category.map(single => {
-          return productCategories.push(single);
-        })
-      );
-    });
-  const individualProductCategories = getIndividualItemArray(productCategories);
-  return individualProductCategories;
+  products.forEach(product => {
+    if (product.categories) {
+      product.categories.forEach(single => {
+        productCategories.push(single);
+      });
+    }
+  });
+  return getIndividualItemArray(productCategories);
 };
 
-// get individual tags
 export const getIndividualTags = products => {
   let productTags = [];
-  products &&
-    products.map(product => {
-      return (
-        product.tag &&
-        product.tag.map(single => {
-          return productTags.push(single);
-        })
-      );
-    });
-  const individualProductTags = getIndividualItemArray(productTags);
-  return individualProductTags;
+  products.forEach(product => {
+    if (product.tags) {
+      product.tags.forEach(single => {
+        productTags.push(single);
+      });
+    }
+  });
+  return getIndividualItemArray(productTags);
 };
 
 // get individual colors

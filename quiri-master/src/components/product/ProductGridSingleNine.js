@@ -20,7 +20,7 @@ const ProductGridSingleNine = ({
   colorClass
 }) => {
   const [modalShow, setModalShow] = useState(false);
-  const discountedPrice = getDiscountPrice(product.price, product.discount);
+  const discountedPrice = getDiscountPrice(product.price, product.discountpercentage);
   const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
   const finalDiscountedPrice = +(
     discountedPrice * currency.currencyRate
@@ -49,14 +49,14 @@ const ProductGridSingleNine = ({
               ""
             )}
           </Link>
-          {product.discount || product.new ? (
+          {product.discountpercentage || product.newyn ? (
             <div className="product-img-badges">
-              {product.discount ? (
-                <span className="pink">-{product.discount}%</span>
+              {product.discountpercentage ? (
+                <span className="pink">-{product.discountpercentage}%</span>
               ) : (
                 ""
               )}
-              {product.new ? <span className="purple">New</span> : ""}
+              {product.newyn ? <span className="purple">New</span> : ""}
             </div>
           ) : (
             ""

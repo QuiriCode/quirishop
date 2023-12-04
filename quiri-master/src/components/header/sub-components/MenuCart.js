@@ -17,7 +17,7 @@ const MenuCart = () => {
             {cartItems.map((item) => {
               const discountedPrice = getDiscountPrice(
                 item.price,
-                item.discount
+                item.discountpercentage
               );
               const finalProductPrice = (
                 item.price * currency.currencyRate

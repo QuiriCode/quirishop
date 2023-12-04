@@ -54,7 +54,7 @@ const Wishlist = () => {
                           {wishlistItems.map((wishlistItem, key) => {
                             const discountedPrice = getDiscountPrice(
                               wishlistItem.price,
-                              wishlistItem.discount
+                              wishlistItem.discountpercentage
                             );
                             const finalProductPrice = (
                               wishlistItem.price * currency.currencyRate

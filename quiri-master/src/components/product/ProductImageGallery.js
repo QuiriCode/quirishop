@@ -6,6 +6,8 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Swiper, { SwiperSlide } from "../../components/swiper";
+import { useAppSettings } from '../../data/AppSettingsContext';
+
 
 const ProductImageGallery = ({ product }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -15,6 +17,7 @@ const ProductImageGallery = ({ product }) => {
     key: i,
   }));
   // swiper slider settings
+const appSettings = useAppSettings();
   const gallerySwiperParams = {
     spaceBetween: 10,
     loop: true,
@@ -40,14 +43,14 @@ const ProductImageGallery = ({ product }) => {
   return (
     <Fragment>
       <div className="product-large-image-wrapper">
-        {product.discount || product.new ? (
+        {product.discountpercentage || product.newyn ? (
           <div className="product-img-badges">
-            {product.discount ? (
-              <span className="pink">-{product.discount}%</span>
+            {product.discountpercentage ? (
+              <span className="pink">-{product.discountpercentage}%</span>
             ) : (
               ""
             )}
-            {product.new ? <span className="purple">New</span> : ""}
+            {product.newyn ? <span className="purple">New</span> : ""}
           </div>
         ) : (
           ""
@@ -76,7 +79,15 @@ const ProductImageGallery = ({ product }) => {
               plugins={[Thumbnails, Zoom, Fullscreen]}
             />
           </Swiper>
-        ) : null}
+        ) : (
+                <div className="single-image">
+                  <img
+                    src={appSettings.defaultproductimagebase64}
+                    className="img-fluid"
+                    alt=""
+                  />
+                </div>
+        )}
 
       </div>
       <div className="product-small-image-wrapper mt-15">
