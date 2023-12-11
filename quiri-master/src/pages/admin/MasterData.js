@@ -1,35 +1,115 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Space, Popconfirm, Table, Modal, Form, Input } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import AdminLayout from './AdminLayout'; // Yolu düzeltin
-import Api from '../../Api'; // Yolu düzeltin
+import { Button, Form } from 'antd';
+import AdminLayout from './AdminLayout'; // Correct this path as needed
+import Api from '../../Api'; // Correct this path as needed
+import DynamicTable from './DynamicTable'; // Correct this path as needed
 
 const MasterData = () => {
-    const [data, setData] = useState({});
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [editingItem, setEditingItem] = useState(null);
-    const [editingType, setEditingType] = useState(null);
-    const [form] = Form.useForm();
-    const [loading, setLoading] = useState(false);
+    const [selectedUserProfile, setSelectedUserProfile] = useState(null);
     const api = new Api();
-    const dataTypes = ['appsettings', 'categories', 'tags'];
+    const dataTypes = ['appsettings', 'categories', 'tags', 'colors', 'userprofiles', 'userroles', 'brands', 'cargocarriers'];
 
     useEffect(() => {
         dataTypes.forEach(fetchData);
     }, []);
-
-    const fetchData = async (type) => {
-        setLoading(true);
-        try {
-            const response = await api[`get${capitalize(type)}`]();
-            setData(prev => ({ ...prev, [type]: response[type] || [] }));
-        } catch (error) {
-            console.error(`${type} alınırken hata oluştu.`, error);
+    
+    const gridMetaData = {
+        categories: {
+            key:"categories",
+            type:"categories",
+            fields: ['name', 'parentCategoryId'],
+            fetchFunction: api.getCategories,
+            updateFunction: api.updateCategory,
+            addFunction: api.addCategory,
+            deleteFunction: api.deleteCategory,
+            specialFields: {
+                parentCategoryId: {
+                    type: 'select',
+                    fetchFunction: api.getCategories,
+                    placeholder: 'Ana Kategori Seçiniz'
+                }
+            }
+        },
+        tags: {
+            key:"tags",
+            type:"tags",
+            fields: ['name'],
+            fetchFunction: api.getTags,
+            updateFunction: api.updateTag,
+            addFunction: api.addTag,
+            deleteFunction: api.deleteTag
+        },
+        colors: {
+            key:"colors",
+            type:"colors",
+            fields: ['name', 'red', 'green', 'blue', 'hex'],
+            fetchFunction: api.getColors,
+            updateFunction: api.updateColor,
+            addFunction: api.addColor,
+            deleteFunction: api.deleteColor
+        },
+        appsettings: {
+            key:"appsettings",
+            type:"appsettings",
+            fields: ['settingkey', 'settingvalue'],
+            fetchFunction: api.getAppsettings,
+            updateFunction: api.updateAppsetting,
+            addFunction: api.addAppsetting,
+            deleteFunction: api.deleteAppsetting
+        },
+        userprofiles: {
+            key:"userprofiles",
+            type:"userprofiles",
+            fields: ['name'],
+            fetchFunction: api.getUserProfiles,
+            updateFunction: api.updateUserProfile,
+            addFunction: api.addUserProfile,
+            deleteFunction: api.deleteUserProfile,
+            childGrid: 'userprofileroles'
+        },
+        userprofileroles: {
+            key:"userprofileroles",
+            type:"userprofileroles",
+            fields: ['userprofileid', 'roleid', 'allowedyn'],
+            fetchFunction: () => api.getUserProfileRoles(selectedUserProfile?.id),
+            updateFunction: api.updateUserProfileRole,
+            addFunction: api.addUserProfileRole,
+            deleteFunction: api.deleteUserProfileRole
+        },
+        userroles: {
+            key:"userroles",
+            type:"userroles",
+            fields: ['code', 'description', 'flexcolumn'],
+            fetchFunction: api.getUserRoles,
+            updateFunction: api.updateUserRole,
+            addFunction: api.addUserRole,
+            deleteFunction: api.deleteUserRole
+        },
+        brands: {
+            key:"brands",
+            type:"brands",
+            fields: ['name', 'redirecturl'],
+            fetchFunction: api.getBrands,
+            updateFunction: api.updateBrand,
+            addFunction: api.addBrand,
+            deleteFunction: api.deleteBrand
+        },
+        cargocarriers: {
+            key:"cargocarriers",
+            type:"cargocarriers",
+            fields: ['name', 'phone', 'iconimageid', 'logoimageid', 'addressid'],
+            fetchFunction: api.getCargoCarriers,
+            updateFunction: api.updateCargoCarrier,
+            addFunction: api.addCargoCarrier,
+            deleteFunction: api.deleteCargoCarrier
         }
-        setLoading(false);
     };
 
-    const capitalize = (str) => str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
+    
+    const onSelectUserProfile = (record) => {
+        setSelectedUserProfile(record);
+        fetchData('userprofileroles');
+    };
 
     const showModal = (item = null, type) => {
         form.setFieldsValue({ name: item?.name || '' });
@@ -38,174 +118,34 @@ const MasterData = () => {
         setIsModalVisible(true);
     };
 
-    const handleCancel = () => setIsModalVisible(false);
-
-    const handleFinish = async (values) => {
-        setLoading(true);
-        try {
-            const apiMethod = editingItem ? `update${capitalize(editingType)}` : `add${capitalize(editingType)}`;
-            if (api[apiMethod]) {
-                if (editingItem) {
-                    await api[apiMethod](editingItem ? editingItem.id : null, values);
-                } else {
-                    // Yeni ekleme işlemi için sadece values'ı kullanın
-                    await api[apiMethod](values);
-                }
-                fetchData(editingType);
-                setIsModalVisible(false);
-                setEditingItem(null);
-            } else {
-                console.error(`API method not found: ${apiMethod}`);
-            }
-        } catch (error) {
-            console.error("İşlem sırasında hata oluştu.", error);
-        }
-        setLoading(false);
+    const showModalToAdd = (type) => {
+        setEditingType(type);
+        setEditingItem(null);
+        setIsModalVisible(true);
     };
-
-    const handleDelete = async (id, type) => {
-        setLoading(true);
-        try {
-            await api[`delete${capitalize(type)}`](id);
-            fetchData(type);
-        } catch (error) {
-            console.error("Silme işlemi sırasında hata oluştu.", error);
-        }
-        setLoading(false);
-    };
-
-    const columns = (type) => {
-        if (type === 'appsettings') {
-            return [
-                {
-                    title: "Key",
-                    dataIndex: "settingkey",
-                    key: "settingkey",
-                },
-                {
-                    title: "Value",
-                    dataIndex: "settingvalue",
-                    key: "settingvalue",
-                },
-                // Action column for appsettings
-                {
-                    title: "İşlemler",
-                    key: "actions",
-                    render: (_, record) => (
-                        <Space>
-                            <Button icon={<EditOutlined />} onClick={() => showModal(record, type)}>
-                                Düzenle
-                            </Button>
-                            <Popconfirm
-                                title="Bu ayarı silmek istediğinizden emin misiniz?"
-                                onConfirm={() => handleDelete(record.id, type)}
-                            >
-                                <Button icon={<DeleteOutlined />} danger>
-                                    Sil
-                                </Button>
-                            </Popconfirm>
-                        </Space>
-                    ),
-                },
-            ];
-        }
-
-        // Default columns for other types like categories or tags
-        return [
-            {
-                title: "İsim",
-                dataIndex: "name",
-                key: "name",
-            },
-            // Action column for other types
-            {
-                title: "İşlemler",
-                key: "actions",
-                render: (_, record) => (
-                    <Space>
-                        <Button icon={<EditOutlined />} onClick={() => showModal(record, type)}>
-                            Düzenle
-                        </Button>
-                        <Popconfirm
-                            title="Bu öğeyi silmek istediğinizden emin misiniz?"
-                            onConfirm={() => handleDelete(record.id, type)}
-                        >
-                            <Button icon={<DeleteOutlined />} danger>
-                                Sil
-                            </Button>
-                        </Popconfirm>
-                    </Space>
-                ),
-            },
-        ];
-    };
-
-
+    
     return (
         <AdminLayout>
             <div className="master-data-panel">
-                {dataTypes.map(type => (
+                {dataTypes.map((type) => (
                     <div key={type}>
-                        <Button type="primary" onClick={() => showModal(null, type)}>
-                            Yeni {capitalize(type)} Ekle
-                        </Button>
-                        <Table
-                            dataSource={data[type]}
-                            columns={columns(type)}
-                            loading={loading}
-                            rowKey="id"
-                            pagination={{ pageSize: 10 }}
-                            style={{ marginBottom: 20 }}
+                        <DynamicTable
+                            type={type}
+                            data={data[type]}
+                            metaData={gridMetaData[type]}
+                            onEdit={(record) => handleEdit(type, record)}
+                            onDelete={(id) => handleDelete(type, id)}
+                            isModalVisible={isModalVisible}
+                            handleModalCancel={handleCancel}
+                            editingItem={editingItem}
+                            form={form}
+                            handleFinish={handleFinish}
                         />
                     </div>
                 ))}
-                <Modal
-                    title={editingItem ? `${capitalize(editingType)} Düzenle` : `Yeni ${capitalize(editingType)} Ekle`}
-                    visible={isModalVisible}
-                    onCancel={handleCancel}
-                    footer={null}
-                >
-                    <Form
-                        form={form}
-                        layout="vertical"
-                        onFinish={handleFinish}
-                    >
-                        {editingType === 'appsettings' ? (
-                            <>
-                                <Form.Item
-                                    name="settingkey"
-                                    label="Key"
-                                    rules={[{ required: true, message: 'Please enter a key!' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
-                                <Form.Item
-                                    name="settingvalue"
-                                    label="Value"
-                                    rules={[{ required: true, message: 'Please enter a value!' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
-                            </>
-                        ) : (
-                            <Form.Item
-                                name="name"
-                                label="İsim"
-                                rules={[{ required: true, message: 'Lütfen bir isim giriniz!' }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                        )}
-                        <Form.Item>
-                            <Button type="primary" htmlType="submit">
-                                {editingItem ? 'Güncelle' : 'Ekle'}
-                            </Button>
-                        </Form.Item>
-                    </Form>
-                </Modal>
             </div>
         </AdminLayout>
     );
 };
-
 export default MasterData;
+

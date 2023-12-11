@@ -11,9 +11,6 @@ import { Link } from "react-router-dom";
 
 const { Header, Content } = Layout;
 
-
-
-
 const AdminLayout = ({ children }) => {
   const location = useLocation();
   

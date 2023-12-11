@@ -2,281 +2,149 @@ import React from "react";
 import axios from "axios";
 
 class Api {
-  constructor() {
-    this.baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+  baseUrl = 'http://localhost:5000';
+
+  constructor(username, password) {
+    this.authHeader = `Basic ${btoa(`${username}:${password}`)}`;
   }
 
-  async addProduct(data) {
+  handleRequest = async (url, data, method, headers = {}) => {
     try {
-      const response = await axios.post(`${this.baseUrl}/api/products`, data);
-      return response.data;
-    } catch (error) {
-      console.error("Ürün eklenirken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async updateProduct(id, data) {
-    try {
-      const response = await axios.put(`${this.baseUrl}/api/products/${id}`, data);
-      return response.data;
-    } catch (error) {
-      console.error("Ürün güncellenirken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async deleteProduct(id) {
-    try {
-      const response = await axios.delete(`${this.baseUrl}/api/products/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error("Ürün silinirken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async searchProducts(search) {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/products`, {
-        params: { search },
-      });
-      console.log("response.data", response.data);
-      return response.data;
-    } catch (error) {
-      console.error("Ürünler aranırken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async getProduct(product_id) {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/products/${product_id}`);
-      return response.data;
-    } catch (error) {
-      console.error("Ürünler alınırken hata oluştu(getProduct:)", error);
-      throw error;
-    }
-  }
-  async getProductsByCategory(category) {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/products/category/${category}`);
-      return response.data;
-    } catch (error) {
-      console.error("Ürünler alınırken hata oluştu(getProductsByCategory:)", error);
-      throw error;
-    }
-  }
-
-  async getAppsettings() {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/appsettings`);
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching app settings:", error);
-      throw error;
-    }
-  }
-  async getAppsettingsForUse() {
-    try {
-        const response = await axios.get(`${this.baseUrl}/api/appsettings-for-use`);
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching app settings:", error);
-        throw error;
-    }
-}
-
-  async getCategories() {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/categories`);
-      console.log(response)
-      return response.data;
-    } catch (error) {
-      console.error("Kategoriler alınırken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async getAllProducts() {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/allproducts`);
-      return response.data;
-    } catch (error) {
-      console.error("Ürünler alınırken hata oluştu(getProducts:)", error);
-      throw error;
-    }
-  }
-
-  async uploadFile(file) {
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post(`${this.baseUrl}/api/upload`, formData);
-      console.log("upload:",response);
-      return await response.data;
-    } 
-    catch (error) {
-      console.error("File upload failed.", error);
-      throw error;
-    }
-  }
-
-  async getListProducts(productid, filters) {
-    try {
-      // Headers ve params objelerini hazırla
-      const config = {
-        headers: {},
-        params: {}
-      };
-
-      // Eğer productid varsa, header'a ekle
-      if (productid) {
-        config.headers.productid = productid;
-      }
-
-      // Eğer filtreler varsa, params'a ekle
-      if (filters) {
-        config.params.filters = JSON.stringify(filters);
-      }
-      else{
-        config.params.filters = {};
-      }
-
-      const response = await axios.get(`${this.baseUrl}/api/listproducts`, config);
-      return response.data;
-    } catch (error) {
-      console.error("Ürünler alınırken hata oluştu(getListProducts):", error);
-      throw error;
-    }
-  }
-
-  async getHighlights() {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/highlights`);
-      return response.data;
-    } catch (error) {
-      console.error("Öne çıkanlar alınırken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async addHighlight(data) {
-    try {
-      const response = await axios.post(`${this.baseUrl}/api/highlights`, data);
-      return response.data;
-    } catch (error) {
-      console.error("Highlight eklenirken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async deleteHighlight(id) {
-    try {
-      const response = await axios.delete(`${this.baseUrl}/api/highlights/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error("Highlight silinirken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async updateHighlight(id, data) {
-    try {
-      const response = await axios.put(`${this.baseUrl}/api/highlights/${id}`, data);
-      return response.data;
-    } catch (error) {
-      console.error("Highlight güncellenirken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async getTags() {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/tags`);
-      return response.data;
-    } catch (error) {
-      console.error("Tagler alınırken hata oluştu.", error);
-      throw error;
-    }
-  }
-
-  async getVariations(productId) {
-    try {
-      const response = await axios.get(`${this.baseUrl}/api/variations`, {
-        params: { productId }
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching variations for product", productId, error);
-      throw error;
-    }
-  }
-
-  // Kategoriler için CRUD işlemleri
-  async addCategories(data) {
-    return this.handleRequest(`/api/categories`, data, 'post');
-  }
-
-  async updateCategories(id, data) {
-    return this.handleRequest(`/api/categories/${id}`, data, 'put');
-  }
-
-  async deleteCategories(id) {
-    return this.handleRequest(`/api/categories/${id}`, {}, 'delete');
-  }
-  
-  async addAppsettings(data) {
-    return this.handleRequest(`/api/appsettings`, data, 'post');
-  }
-
-  async updateAppsettings(id, data) {
-    return this.handleRequest(`/api/appsettings/${id}`, data, 'put');
-  }
-
-  async deleteAppsettings(id) {
-    return this.handleRequest(`/api/appsettings/${id}`, {}, 'delete');
-  }
-
-  // Tagler için CRUD işlemleri
-  async addTags(data) {
-    return this.handleRequest(`/api/tags`, data, 'post');
-  }
-
-  async updateTags(id, data) {
-    return this.handleRequest(`/api/tags/${id}`, data, 'put');
-  }
-
-  async deleteTags(id) {
-    return this.handleRequest(`/api/tags/${id}`, {}, 'delete');
-  }
-
- // Genel HTTP istek yöneticisi
-async handleRequest(url, data, method) {
-  try {
       const fullUrl = `${this.baseUrl}${url}`;
       const config = {
-          method: method,
-          url: fullUrl,
-          headers: {},
+        method: method,
+        url: fullUrl,
+        headers: {
+          ...headers,
+          'Authorization': this.authHeader, // Add the auth header
+        },
       };
 
       if (method !== 'get') {
-          config.data = data;
-          config.headers['Content-Type'] = 'application/json';
+        config.data = data;
       } else {
-          config.params = data;
+        config.params = data;
       }
 
       const response = await axios(config);
       return response.data;
-  } catch (error) {
+    } catch (error) {
       console.error(`${method.toUpperCase()} request to ${url} failed:`, error);
       throw error;
+    }
   }
+
+ // CRUD for Colors
+ getColors = () => this.handleRequest('/api/colors', {}, 'get');
+ addColor = (data) => this.handleRequest('/api/colors', data, 'post');
+ updateColor = (id, data) => this.handleRequest(`/api/colors/${id}`, data, 'put');
+ deleteColor = (id) => this.handleRequest(`/api/colors/${id}`, {}, 'delete');
+
+  // CRUD for Brands
+  getBrands = () => this.handleRequest('/api/brands', {}, 'get');
+  addBrand = (data) => this.handleRequest('/api/brands', data, 'post');
+  updateBrand = (id, data) => this.handleRequest(`/api/brands/${id}`, data, 'put');
+  deleteBrand = (id) => this.handleRequest(`/api/brands/${id}`, {}, 'delete');
+
+ // CRUD for Products
+ getProducts = () => this.handleRequest('/api/products', {}, 'get');
+ addProduct = (data) => this.handleRequest('/api/products', data, 'post');
+ updateProduct = (id, data) => this.handleRequest(`/api/products/${id}`, data, 'put');
+ deleteProduct = (id) => this.handleRequest(`/api/products/${id}`, {}, 'delete');
+
+ // CRUD for Categories
+ getCategories = () => this.handleRequest('/api/categories', {}, 'get');
+ addCategory = (data) => this.handleRequest('/api/categories', data, 'post');
+ updateCategory = (id, data) => this.handleRequest(`/api/categories/${id}`, data, 'put');
+ deleteCategory = (id) => this.handleRequest(`/api/categories/${id}`, {}, 'delete');
+
+  // CRUD for Tags
+  getTags = () => this.handleRequest('/api/tags', {}, 'get');
+  addTag = (data) => this.handleRequest('/api/tags', data, 'post');
+  updateTag = (id, data) => this.handleRequest(`/api/tags/${id}`, data, 'put');
+  deleteTag = (id) => this.handleRequest(`/api/tags/${id}`, {}, 'delete');
+
+   // CRUD for Cargo Carriers
+   getCargoCarriers = () => this.handleRequest('/api/cargocarriers', {}, 'get');
+   addCargoCarrier = (data) => this.handleRequest('/api/cargocarriers', data, 'post');
+   updateCargoCarrier = (id, data) => this.handleRequest(`/api/cargocarriers/${id}`, data, 'put');
+   deleteCargoCarrier = (id) => this.handleRequest(`/api/cargocarriers/${id}`, {}, 'delete');
+ 
+   // CRUD for User Profiles
+   getUserProfiles = () => this.handleRequest('/api/userprofiles', {}, 'get');
+   addUserProfile = (data) => this.handleRequest('/api/userprofiles', data, 'post');
+   updateUserProfile = (id, data) => this.handleRequest(`/api/userprofiles/${id}`, data, 'put');
+   deleteUserProfile = (id) => this.handleRequest(`/api/userprofiles/${id}`, {}, 'delete');
+ 
+   // CRUD for User Profile Roles
+   getUserProfileRoles = (userProfileId) => this.handleRequest(`/api/userprofileroles/${userProfileId}`, {}, 'get');
+   addUserProfileRole = (data) => this.handleRequest('/api/userprofileroles', data, 'post');
+   updateUserProfileRole = (id, data) => this.handleRequest(`/api/userprofileroles/${id}`, data, 'put');
+   deleteUserProfileRole = (id) => this.handleRequest(`/api/userprofileroles/${id}`, {}, 'delete');
+ 
+   // CRUD for User Roles
+   getUserRoles = () => this.handleRequest('/api/userroles', {}, 'get');
+   addUserRole = (data) => this.handleRequest('/api/userroles', data, 'post');
+   updateUserRole = (id, data) => this.handleRequest(`/api/userroles/${id}`, data, 'put');
+   deleteUserRole = (id) => this.handleRequest(`/api/userroles/${id}`, {}, 'delete');
+ 
+    // CRUD for App Settings
+  getAppsettings = () => this.handleRequest('/api/appsettings', {}, 'get');
+  addAppsetting = (data) => this.handleRequest('/api/appsettings', data, 'post');
+  updateAppsetting = (id, data) => this.handleRequest(`/api/appsettings/${id}`, data, 'put');
+  deleteAppsetting = (id) => this.handleRequest(`/api/appsettings/${id}`, {}, 'delete');
+
+  // CRUD for Highlights
+  getHighlights = () => this.handleRequest('/api/highlights', {}, 'get');
+  addHighlight = (data) => this.handleRequest('/api/highlights', data, 'post');
+  updateHighlight = (id, data) => this.handleRequest(`/api/highlights/${id}`, data, 'put');
+  deleteHighlight = (id) => this.handleRequest(`/api/highlights/${id}`, {}, 'delete');
+
+  // File Upload
+  uploadFile = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const response = await axios.post(`${this.baseUrl}/api/upload`, formData, {
+        headers: {
+          'Authorization': this.authHeader,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("File upload failed.", error);
+      throw error;
+    }
+  }
+  
+  searchProducts = (search) => this.handleRequest('/api/products', { search }, 'get');
+
+  // Get Product by ID
+  getProduct = (product_id) => this.handleRequest(`/api/products/${product_id}`, {}, 'get');
+  
+  // Get Products by Category
+  getProductsByCategory = (category) => this.handleRequest(`/api/products/category/${category}`, {}, 'get');
+
+  // Get All App Settings
+  getAppsettings = () => this.handleRequest('/api/appsettings', {}, 'get');
+  getAppsettingsForUse = () => this.handleRequest('/api/appsettings-for-use', {}, 'get');
+
+  // Get All Products
+  getAllProducts = () => this.handleRequest('/api/allproducts', {}, 'get');
+
+  // List Products with Filters
+  getListProducts = (productid, filters) => {
+    const config = {
+      headers: productid ? { productid } : {},
+      params: filters ? { filters: JSON.stringify(filters) } : {},
+    };
+    return this.handleRequest('/api/listproducts', config, 'get');
+  };
+
+  // Get Product Variations
+  getVariations = (productId) => this.handleRequest(`/api/variations`, { productId }, 'get');
+
 }
-
-
-}
-
 export default Api;

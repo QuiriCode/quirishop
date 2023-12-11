@@ -467,9 +467,6 @@ updateuser
 dataorigin
 productid
 colorid
-filename
-mimetype
-imageurl
 
 colors
 id
@@ -508,6 +505,7 @@ productid(may be null)
 highlightid(may be null)
 brandid(may be null)
 reviewid(may be null)
+variationid(may be null)
 filename
 mimetype
 imageurl

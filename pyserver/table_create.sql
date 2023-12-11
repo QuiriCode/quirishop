@@ -483,10 +483,7 @@ CREATE TABLE IF NOT EXISTS variations (
     updateuser VARCHAR(255),
     dataorigin VARCHAR(255),
     productid INTEGER,
-    colorid INTEGER,
-    filename VARCHAR(255),
-    mimetype VARCHAR(50),
-    imageurl VARCHAR(255)
+    colorid INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS colors (
@@ -554,6 +551,7 @@ CREATE TABLE IF NOT EXISTS images (
     highlightid INTEGER,
     brandid INTEGER,
     reviewid INTEGER,
+    variationid INTEGER,
     filename VARCHAR(255),
     mimetype VARCHAR(50),
     imageurl VARCHAR(255),
